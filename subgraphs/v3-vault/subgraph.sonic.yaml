@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: gnosis
+    network: sonic
     source:
       abi: Vault
       address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
-      startBlock: 37360338
+      startBlock: 368135
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -47,11 +47,11 @@ dataSources:
       file: ./src/mappings/vault.ts
   - kind: ethereum
     name: ProtocolFeeController
-    network: gnosis
+    network: sonic
     source:
       abi: ProtocolFeeController
       address: "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8"
-      startBlock: 37360338
+      startBlock: 368135
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -85,7 +85,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: gnosis
+    network: sonic
     source:
       abi: BPT
     mapping:

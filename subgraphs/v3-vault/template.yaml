@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: gnosis
+    network: {{ network }}
     source:
       abi: Vault
-      address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
-      startBlock: 37360338
+      address: "{{ Vault.address }}"
+      startBlock: {{ Vault.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -45,13 +45,14 @@ dataSources:
         - event: Unwrap(indexed address,uint256,uint256,bytes32)
           handler: handleUnwrap
       file: ./src/mappings/vault.ts
+
   - kind: ethereum
     name: ProtocolFeeController
-    network: gnosis
+    network: {{ network }}
     source:
       abi: ProtocolFeeController
-      address: "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8"
-      startBlock: 37360338
+      address: "{{ ProtocolFeeController.address }}"
+      startBlock: {{ ProtocolFeeController.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -82,10 +83,11 @@ dataSources:
         - event: ProtocolFeesWithdrawn(indexed address,indexed address,indexed address,uint256)
           handler: handleProtocolFeesWithdrawn
       file: ./src/mappings/controller.ts
+
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: gnosis
+    network: {{ network }}
     source:
       abi: BPT
     mapping:

@@ -7,6 +7,8 @@ export namespace PoolType {
   export const Weighted = "Weighted";
   export const Stable = "Stable";
   export const QuantAMMWeighted = "QuantAMMWeighted";
+  export const Gyro2 = "Gyro2";
+  export const GyroE = "GyroE";
 }
 
 export function createBasePool(
