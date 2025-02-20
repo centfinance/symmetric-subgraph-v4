@@ -283,37 +283,6 @@ export function handleLiquidityRemoved(event: LiquidityRemoved): void {
 export function handleSwap(event: SwapEvent): void {
   createUser(event.transaction.from);
 
-  let swap = new Swap(event.transaction.hash.concatI32(event.logIndex.toI32()));
-
-  let tokenIn = getToken(event.params.tokenIn);
-  let tokenOut = getToken(event.params.tokenOut);
-  let swapFeeToken = getToken(event.params.tokenIn);
-
-  let tokenAmountIn = scaleDown(event.params.amountIn, tokenIn.decimals);
-  let tokenAmountOut = scaleDown(event.params.amountOut, tokenOut.decimals);
-  let swapFeeAmount = scaleDown(
-    event.params.swapFeeAmount,
-    swapFeeToken.decimals
-  );
-
-  swap.pool = event.params.pool;
-  swap.tokenIn = event.params.tokenIn;
-  swap.tokenInSymbol = tokenIn.symbol;
-  swap.tokenAmountIn = tokenAmountIn;
-  swap.tokenOut = event.params.tokenOut;
-  swap.tokenOutSymbol = tokenOut.symbol;
-  swap.tokenAmountOut = tokenAmountOut;
-  swap.swapFeeAmount = swapFeeAmount;
-  swap.swapFeeToken = event.params.tokenIn;
-  swap.swapFeePercentage = scaleDown(event.params.swapFeePercentage, 18);
-  swap.user = event.transaction.from;
-
-  swap.logIndex = event.logIndex;
-  swap.blockNumber = event.block.number;
-  swap.blockTimestamp = event.block.timestamp;
-  swap.transactionHash = event.transaction.hash;
-  swap.save();
-
   let poolAddress = event.params.pool;
 
   let pool = Pool.load(poolAddress);
@@ -327,6 +296,50 @@ export function handleSwap(event: SwapEvent): void {
 
   pool.swapsCount = pool.swapsCount.plus(BigInt.fromI32(1));
   pool.save();
+
+  let swap = new Swap(event.transaction.hash.concatI32(event.logIndex.toI32()));
+
+  let tokenIn = getToken(event.params.tokenIn);
+  let tokenOut = getToken(event.params.tokenOut);
+  let swapFeeToken = getToken(event.params.tokenIn);
+
+  let tokenAmountIn = scaleDown(event.params.amountIn, tokenIn.decimals);
+  let tokenAmountOut = scaleDown(event.params.amountOut, tokenOut.decimals);
+  let swapFeeAmount = scaleDown(
+    event.params.swapFeeAmount,
+    swapFeeToken.decimals
+  );
+
+  let swapFeePercentage = scaleDown(event.params.swapFeePercentage, 18);
+
+  let hasDynamicSwapFee = pool.swapFee != swapFeePercentage;
+  let swapFeeBaseAmount = swapFeeAmount;
+  let swapFeeDeltaAmount = ZERO_BD;
+  if (hasDynamicSwapFee) {
+    let swapFeeDelta = swapFeePercentage.minus(pool.swapFee);
+    swapFeeBaseAmount = tokenAmountIn.times(pool.swapFee);
+    swapFeeDeltaAmount = tokenAmountIn.times(swapFeeDelta);
+  }
+
+  swap.pool = event.params.pool;
+  swap.tokenIn = event.params.tokenIn;
+  swap.tokenInSymbol = tokenIn.symbol;
+  swap.tokenAmountIn = tokenAmountIn;
+  swap.tokenOut = event.params.tokenOut;
+  swap.tokenOutSymbol = tokenOut.symbol;
+  swap.tokenAmountOut = tokenAmountOut;
+  swap.swapFeeAmount = swapFeeAmount;
+  swap.swapFeeBaseAmount = swapFeeBaseAmount;
+  swap.swapFeeDeltaAmount = swapFeeDeltaAmount;
+  swap.swapFeeToken = event.params.tokenIn;
+  swap.swapFeePercentage = swapFeePercentage;
+  swap.hasDynamicSwapFee = hasDynamicSwapFee;
+  swap.user = event.transaction.from;
+  swap.logIndex = event.logIndex;
+  swap.blockNumber = event.block.number;
+  swap.blockTimestamp = event.block.timestamp;
+  swap.transactionHash = event.transaction.hash;
+  swap.save();
 
   let tokenInAddress = event.params.tokenIn;
   let tokenOutAddress = event.params.tokenOut;
@@ -355,6 +368,19 @@ export function handleSwap(event: SwapEvent): void {
   poolTokenIn.totalProtocolSwapFee = poolTokenIn.totalProtocolSwapFee.plus(
     aggregateSwapFeeAmount
   );
+
+  if (hasDynamicSwapFee) {
+    poolTokenIn.totalDynamicSwapFee =
+      poolTokenIn.totalDynamicSwapFee.plus(swapFeeAmount);
+    poolTokenIn.totalSwapFeeBase =
+      poolTokenIn.totalSwapFeeBase.plus(swapFeeBaseAmount);
+    poolTokenIn.totalSwapFeeDelta =
+      poolTokenIn.totalSwapFeeDelta.plus(swapFeeDeltaAmount);
+  } else {
+    poolTokenIn.totalStaticSwapFee =
+      poolTokenIn.totalStaticSwapFee.plus(swapFeeAmount);
+  }
+
   poolTokenIn.save();
 
   let newOutAmount = poolTokenOut.balance.minus(tokenAmountOut);

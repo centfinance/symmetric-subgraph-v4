@@ -73,6 +73,8 @@ export function createPoolSnapshot(pool: Pool, timestamp: i32): void {
   let poolTokens = pool.tokens.load();
   let balances = new Array<BigDecimal>(poolTokens.length);
   let totalSwapFees = new Array<BigDecimal>(poolTokens.length);
+  let totalStaticSwapFees = new Array<BigDecimal>(poolTokens.length);
+  let totalDynamicSwapFees = new Array<BigDecimal>(poolTokens.length);
   let totalSwapVolumes = new Array<BigDecimal>(poolTokens.length);
   let totalProtocolSwapFees = new Array<BigDecimal>(poolTokens.length);
   let totalProtocolYieldFees = new Array<BigDecimal>(poolTokens.length);
@@ -80,6 +82,8 @@ export function createPoolSnapshot(pool: Pool, timestamp: i32): void {
     totalSwapVolumes[i] = poolTokens[i].volume;
     balances[i] = poolTokens[i].balance;
     totalSwapFees[i] = poolTokens[i].totalSwapFee;
+    totalStaticSwapFees[i] = poolTokens[i].totalStaticSwapFee;
+    totalDynamicSwapFees[i] = poolTokens[i].totalDynamicSwapFee;
     totalProtocolSwapFees[i] = poolTokens[i].totalProtocolSwapFee;
     totalProtocolYieldFees[i] = poolTokens[i].totalProtocolYieldFee;
   }
@@ -91,6 +95,8 @@ export function createPoolSnapshot(pool: Pool, timestamp: i32): void {
   snapshot.totalShares = pool.totalShares;
   snapshot.holdersCount = pool.holdersCount;
   snapshot.totalSwapFees = totalSwapFees;
+  snapshot.totalStaticSwapFees = totalStaticSwapFees;
+  snapshot.totalDynamicSwapFees = totalDynamicSwapFees;
   snapshot.totalSwapVolumes = totalSwapVolumes;
   snapshot.totalProtocolSwapFees = totalProtocolSwapFees;
   snapshot.totalProtocolYieldFees = totalProtocolYieldFees;
@@ -129,6 +135,10 @@ export function createPoolToken(
   poolToken.balance = ZERO_BD;
   poolToken.volume = ZERO_BD;
   poolToken.totalSwapFee = ZERO_BD;
+  poolToken.totalSwapFeeBase = ZERO_BD;
+  poolToken.totalSwapFeeDelta = ZERO_BD;
+  poolToken.totalStaticSwapFee = ZERO_BD;
+  poolToken.totalDynamicSwapFee = ZERO_BD;
   poolToken.totalProtocolSwapFee = ZERO_BD;
   poolToken.totalProtocolYieldFee = ZERO_BD;
   poolToken.controllerProtocolFeeBalance = ZERO_BD;

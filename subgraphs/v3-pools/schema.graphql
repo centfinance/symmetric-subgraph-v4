@@ -2,6 +2,7 @@ enum PoolType {
   Weighted
   Stable
   QuantAMMWeighted
+  StableSurge
   Gyro2
   GyroE
 }
@@ -39,6 +40,18 @@ type QuantAMMWeightedPoolDetails @entity {
   "QuantAMM Weighted Pool Detail array"
   poolDetails: [[String!]!]!
 }
+
+type StableSurgeParams @entity {
+  "Unique identifier for the StableSurgeParams"
+  id: Bytes!
+  "Amplification parameter"
+  amp: BigInt!
+  "Maximum surge fee percentage"
+  maxSurgeFeePercentage: BigDecimal!
+  "Surge threshold percentage"
+  surgeThresholdPercentage: BigDecimal!
+}
+
 
 type Gyro2Params @entity {
   "Unique identifier for the Gyro2Params"
@@ -79,6 +92,8 @@ type Pool @entity {
   stableParams: StableParams
   "Parameters for QuantAMMWeighted pools (null for other pool types)"
   quantAMMWeightedParams: QuantAMMWeightedPoolDetails
+  "Parameters for StableSurge pools (null for other pool types)"
+  stableSurgeParams: StableSurgeParams
   "Parameters for Gyro2 pools (null for other pool types)"
   gyro2Params: Gyro2Params
   "Parameters for GyroE pools (null for other pool types)"
