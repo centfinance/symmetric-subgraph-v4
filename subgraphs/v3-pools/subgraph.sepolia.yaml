@@ -63,10 +63,18 @@ dataSources:
         - Factory
         - Pool
       abis:
+        - name: QuantAMMStorage
+          file: ./abis/QuantAMMStorage.json
         - name: QuantAMMWeightedPool
           file: ./abis/QuantAMMWeightedPool.json
         - name: QuantAMMWeightedPoolFactory
           file: ./abis/QuantAMMWeightedPoolFactory.json
+        - name: ScalarQuantAMMBaseStorage
+          file: ./abis/ScalarQuantAMMBaseStorage.json
+        - name: ScalarRuleQuantAMMStorage
+          file: ./abis/ScalarRuleQuantAMMStorage.json
+        - name: VectorRuleQuantAMMStorage
+          file: ./abis/VectorRuleQuantAMMStorage.json
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleQuantAMMWeightedPoolCreated
