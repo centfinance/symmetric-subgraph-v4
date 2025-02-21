@@ -5,14 +5,24 @@ import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeight
 import { QuantAMMWeightedPool } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPool";
 import { QuantAMMWeightedPoolDetails } from "../types/schema";
 
-const CATEGORIES = ["filter", "overview", "deployment", "ruleDetail"];
+/*
+ * We store pool details as a list of lists of strings.
+ * The first list is the category of the detail.
+ * The second list is the name of the detail.
+ *
+ * The categories and names are stored in the CATEGORIES and NAMES arrays.
+ *
+ * For example:
+ *  overview:
+ *   - adaptabilityScore
+ *   - description
+ *  ruleDetail:
+ *   - updateRuleName
+ *
+ */
+const CATEGORIES = ["overview", "ruleDetail"];
 
-const NAMES = [
-  ["chain"], // filter
-  ["adaptabilityScore"], // overview
-  ["chain"], // deployment
-  ["ruleName", "updateInterval"], // ruleDetail
-];
+const NAMES = [["adaptabilityScore", "description"], ["updateRuleName"]];
 
 function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   let quantAMMWeightedPool = QuantAMMWeightedPool.bind(poolAddress);
