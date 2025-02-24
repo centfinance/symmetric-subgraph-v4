@@ -133,6 +133,10 @@
     "StablePoolFactory": {
       "address": "0x815Ab57a5a2E4976cEC0b43C2D50CF26EF6F31Fd",
       "startBlock": 381473
+    },
+    "StableSurgeHook": {
+      "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
+      "startBlock": 8689860
     }
   }
 }
