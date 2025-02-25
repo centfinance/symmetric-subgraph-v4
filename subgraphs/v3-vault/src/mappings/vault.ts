@@ -172,14 +172,21 @@ export function handleLiquidityAdded(event: LiquidityAdded): void {
   let poolTokens = pool.tokens.load();
   let joinAmounts = new Array<BigDecimal>(amountsAddedRaw.length);
 
+  let vault = VaultExtension.bind(event.address);
+  let poolTokensInfo = vault.getPoolTokenInfo(poolAddress);
+
   for (let i: i32 = 0; i < poolTokens.length; i++) {
     let poolToken = poolTokens[i];
     let joinAmount = scaleDown(
       event.params.amountsAddedRaw[i],
       poolToken.decimals
     );
-    poolToken.balance = poolToken.balance.plus(joinAmount);
     joinAmounts[i] = joinAmount;
+
+    poolToken.balance = scaleDown(
+      poolTokensInfo.getBalancesRaw()[i],
+      poolToken.decimals
+    );
 
     let aggregateSwapFeeAmount = scaleDown(
       computeAggregateSwapFee(
@@ -235,14 +242,21 @@ export function handleLiquidityRemoved(event: LiquidityRemoved): void {
   let poolTokens = pool.tokens.load();
   let exitAmounts = new Array<BigDecimal>(amounts.length);
 
+  let vault = VaultExtension.bind(event.address);
+  let poolTokensInfo = vault.getPoolTokenInfo(poolAddress);
+
   for (let i: i32 = 0; i < poolTokens.length; i++) {
     let poolToken = poolTokens[i];
     let exitAmount = scaleDown(
       event.params.amountsRemovedRaw[i],
       poolToken.decimals
     );
-    poolToken.balance = poolToken.balance.minus(exitAmount);
     exitAmounts[i] = exitAmount;
+
+    poolToken.balance = scaleDown(
+      poolTokensInfo.getBalancesRaw()[i],
+      poolToken.decimals
+    );
 
     let aggregateSwapFeeAmount = scaleDown(
       computeAggregateSwapFee(
@@ -359,8 +373,13 @@ export function handleSwap(event: SwapEvent): void {
     poolTokenIn.decimals
   );
 
-  let newInAmount = poolTokenIn.balance.plus(tokenAmountIn);
-  poolTokenIn.balance = newInAmount;
+  let vault = VaultExtension.bind(event.address);
+  let poolTokensInfo = vault.getPoolTokenInfo(poolAddress);
+
+  poolTokenIn.balance = scaleDown(
+    poolTokensInfo.getBalancesRaw()[poolTokenIn.index],
+    poolTokenIn.decimals
+  );
   poolTokenIn.volume = poolTokenIn.volume.plus(tokenAmountIn);
   poolTokenIn.totalSwapFee = poolTokenIn.totalSwapFee.plus(swapFeeAmount);
   poolTokenIn.vaultProtocolSwapFeeBalance =
@@ -383,8 +402,10 @@ export function handleSwap(event: SwapEvent): void {
 
   poolTokenIn.save();
 
-  let newOutAmount = poolTokenOut.balance.minus(tokenAmountOut);
-  poolTokenOut.balance = newOutAmount;
+  poolTokenOut.balance = scaleDown(
+    poolTokensInfo.getBalancesRaw()[poolTokenOut.index],
+    poolTokenOut.decimals
+  );
   poolTokenOut.volume = poolTokenOut.volume.plus(tokenAmountOut);
   poolTokenOut.save();
 
