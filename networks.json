@@ -136,7 +136,7 @@
     },
     "StableSurgeHook": {
       "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
-      "startBlock": 8689860
+      "startBlock": 8689861
     }
   }
 }
