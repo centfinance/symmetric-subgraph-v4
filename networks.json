@@ -61,12 +61,12 @@
       "startBlock": 7216947
     },
     "Gyro2CLPPoolFactory": {
-      "address": "0x97701aa7c9ae4497874C54B1C779221d6F1081C9",
-      "startBlock": 7563127
+      "address": "0x5aD57d8BC854449bb85D7EA8B164f1cE266EC5a4",
+      "startBlock": 7734971
     },
     "GyroECLPPoolFactory": {
-      "address": "0xaC06eD505b0d85e46Bf90590f835A12E5EAac86E",
-      "startBlock": 7563132
+      "address": "0x2255b6a03A6eDd0D6CC670864F297869063FE00F",
+      "startBlock": 7734914
     },
     "StableSurgeHook": {
       "address": "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9",
