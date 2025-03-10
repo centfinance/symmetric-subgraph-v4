@@ -607,7 +607,8 @@ export function handleWrap(event: Wrap): void {
 export function handleSwapFeePercentageChanged(
   event: SwapFeePercentageChanged
 ): void {
-  let pool = Pool.load(event.params.pool) as Pool;
+  let pool = Pool.load(event.params.pool);
+  if (!pool) return; // Pool has not been registered yet
   pool.swapFee = scaleDown(event.params.swapFeePercentage, 18);
   pool.save();
 }
