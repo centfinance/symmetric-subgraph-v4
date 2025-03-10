@@ -48,6 +48,11 @@ type Pool @entity {
   transactionHash: Bytes!
   "Indicates whether the Pool has been initialized"
   isInitialized: Boolean!
+  "Indicates whether the Pool is currently paused"
+  isPaused: Boolean!
+  "Indicates whether the Pool is in recovery mode"
+  isInRecoveryMode: Boolean!
+
 
   "Account empowered to pause/unpause the pool"
   pauseManager: Bytes!

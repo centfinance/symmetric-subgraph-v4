@@ -6,8 +6,11 @@ import {
   LiquidityAddedToBuffer,
   LiquidityRemoved,
   LiquidityRemovedFromBuffer,
+  PoolPausedStateChanged,
+  PoolRecoveryModeStateChanged,
   PoolRegistered,
   Swap as SwapEvent,
+  SwapFeePercentageChanged,
   Unwrap,
   Wrap,
 } from "../types/Vault/Vault";
@@ -37,7 +40,7 @@ import { BPT } from "../types/templates";
 import { ERC20 } from "../types/Vault/ERC20";
 import { VaultExtension } from "../types/Vault/VaultExtension";
 import { ERC4626 } from "../types/Vault/ERC4626";
-import { computeAggregateSwapFee } from "../helpers/math";
+import { mulDownSwapFee } from "../helpers/math";
 
 /************************************
  ******* POOLS REGISTRATIONS ********
@@ -54,6 +57,8 @@ export function handlePoolRegistered(event: PoolRegistered): void {
   pool.pauseWindowEndTime = event.params.pauseWindowEndTime;
   pool.totalShares = ZERO_BD;
   pool.isInitialized = false;
+  pool.isInRecoveryMode = false;
+  pool.isPaused = false;
   pool.swapsCount = ZERO_BI;
   pool.holdersCount = ZERO_BI;
   pool.protocolSwapFee = vault.protocolSwapFee;
@@ -189,10 +194,7 @@ export function handleLiquidityAdded(event: LiquidityAdded): void {
     );
 
     let aggregateSwapFeeAmount = scaleDown(
-      computeAggregateSwapFee(
-        event.params.swapFeeAmountsRaw[i],
-        pool.protocolSwapFee
-      ),
+      mulDownSwapFee(event.params.swapFeeAmountsRaw[i], pool.protocolSwapFee),
       poolToken.decimals
     );
 
@@ -259,10 +261,7 @@ export function handleLiquidityRemoved(event: LiquidityRemoved): void {
     );
 
     let aggregateSwapFeeAmount = scaleDown(
-      computeAggregateSwapFee(
-        event.params.swapFeeAmountsRaw[i],
-        pool.protocolSwapFee
-      ),
+      mulDownSwapFee(event.params.swapFeeAmountsRaw[i], pool.protocolSwapFee),
       poolToken.decimals
     );
 
@@ -369,7 +368,7 @@ export function handleSwap(event: SwapEvent): void {
   }
 
   let aggregateSwapFeeAmount = scaleDown(
-    computeAggregateSwapFee(event.params.swapFeeAmount, pool.protocolSwapFee),
+    mulDownSwapFee(event.params.swapFeeAmount, pool.protocolSwapFee),
     poolTokenIn.decimals
   );
 
@@ -593,4 +592,32 @@ export function handleWrap(event: Wrap): void {
     underlyingToken.decimals
   );
   buffer.save();
+}
+
+/************************************
+ ********** POOLS STATE *************
+ ************************************/
+
+export function handleSwapFeePercentageChanged(
+  event: SwapFeePercentageChanged
+): void {
+  let pool = Pool.load(event.params.pool) as Pool;
+  pool.swapFee = scaleDown(event.params.swapFeePercentage, 18);
+  pool.save();
+}
+
+export function handlePoolRecoveryModeStateChanged(
+  event: PoolRecoveryModeStateChanged
+): void {
+  let pool = Pool.load(event.params.pool) as Pool;
+  pool.isInRecoveryMode = event.params.recoveryMode;
+  pool.save();
+}
+
+export function handlePoolPausedStateChanged(
+  event: PoolPausedStateChanged
+): void {
+  let pool = Pool.load(event.params.pool) as Pool;
+  pool.isPaused = event.params.paused;
+  pool.save();
 }
