@@ -44,6 +44,12 @@ dataSources:
           handler: handleWrap
         - event: Unwrap(indexed address,uint256,uint256,bytes32)
           handler: handleUnwrap
+        - event: SwapFeePercentageChanged(indexed address,uint256)
+          handler: handleSwapFeePercentageChanged
+        - event: PoolRecoveryModeStateChanged(indexed address,bool)
+          handler: handlePoolRecoveryModeStateChanged
+        - event: PoolPausedStateChanged(indexed address,bool)
+          handler: handlePoolPausedStateChanged
       file: ./src/mappings/vault.ts
   - kind: ethereum
     name: ProtocolFeeController

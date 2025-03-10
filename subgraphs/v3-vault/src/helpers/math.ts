@@ -9,7 +9,7 @@ export function mulDown(a: BigInt, b: BigInt): BigInt {
   return product.div(ONE);
 }
 
-export function computeAggregateSwapFee(
+export function mulDownSwapFee(
   swapFeeAmountRaw: BigInt,
   swapFeePercentage: BigDecimal
 ): BigInt {
