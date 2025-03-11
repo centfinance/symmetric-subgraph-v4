@@ -1,7 +1,7 @@
 import { Address, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
-import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPoolFactory";
+import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/BasePoolFactory";
 import { QuantAMMWeightedPool } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPool";
 import { QuantAMMWeightedParams } from "../types/schema";
 
