@@ -127,3 +127,28 @@ dataSources:
           handler: handleStableSurgeHookRegistered
       file: ./src/mappings/surge.ts
   {{/if}}
+  {{#if QuantAMMWeightedPoolFactory}}
+  - kind: ethereum
+    name: QuantAMMWeightedPoolFactory
+    network: {{ network }}
+    source:
+      abi: BasePoolFactory
+      address: "{{ QuantAMMWeightedPoolFactory.address }}"
+      startBlock: {{ QuantAMMWeightedPoolFactory.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: QuantAMMWeightedPool
+          file: ./abis/QuantAMMWeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleQuantAMMWeightedPoolCreated
+      file: ./src/mappings/quantamm-weighted.ts
+  {{/if}}
