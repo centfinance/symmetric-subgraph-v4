@@ -28,28 +28,28 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   let pool = QuantAMMWeightedPool.bind(poolAddress);
   let params = new QuantAMMWeightedParams(poolAddress);
 
-  let poolDetails: string[][] = [];
+  // let poolDetails: string[][] = [];
 
-  for (let i = 0; i < CATEGORIES.length; i++) {
-    let category = CATEGORIES[i];
-    let names = NAMES[i];
+  // for (let i = 0; i < CATEGORIES.length; i++) {
+  //   let category = CATEGORIES[i];
+  //   let names = NAMES[i];
 
-    for (let j = 0; j < names.length; j++) {
-      let name = names[j];
-      let poolDetailResult = pool.try_getPoolDetail(category, name);
+  //   for (let j = 0; j < names.length; j++) {
+  //     let name = names[j];
+  //     let poolDetailResult = pool.try_getPoolDetail(category, name);
 
-      if (poolDetailResult.reverted) continue;
+  //     if (poolDetailResult.reverted) continue;
 
-      poolDetails.push([
-        category,
-        name,
-        poolDetailResult.value.value0,
-        poolDetailResult.value.value1,
-      ]);
-    }
-  }
+  //     poolDetails.push([
+  //       category,
+  //       name,
+  //       poolDetailResult.value.value0,
+  //       poolDetailResult.value.value1,
+  //     ]);
+  //   }
+  // }
 
-  params.poolDetails = poolDetails;
+  // params.poolDetails = poolDetails;
 
   let immutableData = pool.getQuantAMMWeightedPoolImmutableData();
 

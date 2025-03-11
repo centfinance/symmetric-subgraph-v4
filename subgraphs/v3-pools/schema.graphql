@@ -37,8 +37,8 @@ type StableParams @entity {
 type QuantAMMWeightedParams @entity {
   "Unique identifier for the QuantAMMWeightedParams"
   id: Bytes!
-  "Pool details array"
-  poolDetails: [[String!]!]!
+  # "Pool details array"
+  # poolDetails: [[String!]!]!
   "Oracle staleness threshold"
   oracleStalenessThreshold: BigInt!
   "Pool registry"
