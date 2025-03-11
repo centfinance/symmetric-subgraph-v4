@@ -3,7 +3,7 @@ import { Address, Bytes } from "@graphprotocol/graph-ts";
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPoolFactory";
 import { QuantAMMWeightedPool } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPool";
-import { QuantAMMWeightedPoolDetails } from "../types/schema";
+import { QuantAMMWeightedParams } from "../types/schema";
 
 /*
  * We store pool details as a list of lists of strings.
@@ -25,33 +25,47 @@ const CATEGORIES = ["overview", "ruleDetail"];
 const NAMES = [["adaptabilityScore", "description"], ["updateRuleName"]];
 
 function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
-  let quantAMMWeightedPool = QuantAMMWeightedPool.bind(poolAddress);
-  let quantAMMWeightedPoolDetails = new QuantAMMWeightedPoolDetails(
-    poolAddress
-  );
+  let pool = QuantAMMWeightedPool.bind(poolAddress);
+  let params = new QuantAMMWeightedParams(poolAddress);
 
-  quantAMMWeightedPoolDetails.poolDetails = [];
+  params.poolDetails = [];
 
   CATEGORIES.forEach((category, index) => {
     NAMES[index].forEach((name) => {
-      let poolDetailResult = quantAMMWeightedPool.try_getPoolDetail(
-        category,
-        name
-      );
+      let poolDetailResult = pool.try_getPoolDetail(category, name);
       if (!poolDetailResult.reverted) {
         const values = [
           category,
           name,
-          poolDetailResult.value.getValue0(),
-          poolDetailResult.value.getValue1(),
+          poolDetailResult.value.value0,
+          poolDetailResult.value.value1,
         ];
-        quantAMMWeightedPoolDetails.poolDetails!.push(values);
+        params.poolDetails!.push(values);
       }
     });
   });
 
-  quantAMMWeightedPoolDetails.save();
-  return quantAMMWeightedPoolDetails.id;
+  let immutableData = pool.getQuantAMMWeightedPoolImmutableData();
+
+  params.absoluteWeightGuardRail = immutableData.absoluteWeightGuardRail;
+  params.oracleStalenessThreshold = immutableData.oracleStalenessThreshold;
+  params.maxTradeSizeRatio = immutableData.maxTradeSizeRatio;
+  params.ruleParameters = immutableData.ruleParameters;
+  params.updateInterval = immutableData.updateInterval;
+  params.poolRegistry = immutableData.poolRegistry;
+  params.epsilonMax = immutableData.epsilonMax;
+  params.lambda = immutableData.lambda;
+
+  let dynamicData = pool.getQuantAMMWeightedPoolDynamicData();
+  params.weightsAtLastUpdateInterval = dynamicData.weightsAtLastUpdateInterval;
+  params.weightBlockMultipliers = dynamicData.weightBlockMultipliers;
+  params.lastUpdateIntervalTime = dynamicData.lastUpdateIntervalTime;
+  params.lastInterpolationTimePossible =
+    dynamicData.lastInterpolationTimePossible;
+
+  params.save();
+
+  return params.id;
 }
 
 export function handleQuantAMMWeightedPoolCreated(event: PoolCreated): void {
@@ -61,6 +75,6 @@ export function handleQuantAMMWeightedPoolCreated(event: PoolCreated): void {
     PoolType.QuantAMMWeighted,
     1,
     handleQuantAMMWeightedPoolParams,
-    "poolDetail"
+    "quantAMMWeightedParams"
   );
 }
