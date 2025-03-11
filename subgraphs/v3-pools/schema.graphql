@@ -1,6 +1,7 @@
 enum PoolType {
   Weighted
   Stable
+  QuantAMMWeighted
   StableSurge
   Gyro2
   GyroE
@@ -33,6 +34,37 @@ type StableParams @entity {
   amp: BigInt!
 }
 
+type QuantAMMWeightedParams @entity {
+  "Unique identifier for the QuantAMMWeightedParams"
+  id: Bytes!
+  "Pool details array"
+  poolDetails: [[String!]!]!
+  "Oracle staleness threshold"
+  oracleStalenessThreshold: BigInt!
+  "Pool registry"
+  poolRegistry: BigInt!
+  "Rule parameters"
+  ruleParameters: [[BigInt!]!]!
+  "Lambda values"
+  lambda: [BigInt!]!
+  "Maximum epsilon value"
+  epsilonMax: BigInt!
+  "Absolute weight guard rail"
+  absoluteWeightGuardRail: BigInt!
+  "Maximum trade size ratio"
+  maxTradeSizeRatio: BigInt!
+  "Update interval"
+  updateInterval: BigInt!
+  "Weights at the last update interval"
+  weightsAtLastUpdateInterval: [BigInt!]!
+  "Weight block multipliers"
+  weightBlockMultipliers: [BigInt!]!
+  "Last update interval time"
+  lastUpdateIntervalTime: BigInt!
+  "Last interpolation time possible"
+  lastInterpolationTimePossible: BigInt!
+}
+
 type StableSurgeParams @entity {
   "Unique identifier for the StableSurgeParams"
   id: Bytes!
@@ -43,7 +75,6 @@ type StableSurgeParams @entity {
   "Surge threshold percentage"
   surgeThresholdPercentage: BigDecimal!
 }
-
 
 type Gyro2Params @entity {
   "Unique identifier for the Gyro2Params"
@@ -88,4 +119,6 @@ type Pool @entity {
   gyro2Params: Gyro2Params
   "Parameters for GyroE pools (null for other pool types)"
   gyroEParams: GyroEParams
+  "Parameters for QuantAMMWeighted pools (null for other pool types)"
+  quantAMMWeightedParams: QuantAMMWeightedParams
 }

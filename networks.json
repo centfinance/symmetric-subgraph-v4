@@ -71,6 +71,10 @@
     "StableSurgeHook": {
       "address": "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9",
       "startBlock": 7655004
+    },
+    "QuantAMMWeightedPoolFactory": {
+      "address": "0x23920dFC349c55F535D1020dcaBFEf4E80b9680b",
+      "startBlock": 7873395
     }
   },
   "arbitrum-one": {
