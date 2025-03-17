@@ -49,6 +49,29 @@ dataSources:
           handler: handleStablePoolCreated
       file: ./src/mappings/stable.ts
   - kind: ethereum
+    name: GyroECLPPoolFactory
+    network: gnosis
+    source:
+      abi: BasePoolFactory
+      address: "0xEa924b45a3fcDAAdf4E5cFB1665823B8F8F2039B"
+      startBlock: 39033094
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: GyroECLPPool
+          file: ./abis/GyroECLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyroEPoolCreated
+      file: ./src/mappings/gyroE.ts
+  - kind: ethereum
     name: StableSurgeHook
     network: gnosis
     source:

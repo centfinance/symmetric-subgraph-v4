@@ -19,6 +19,10 @@
     "StableSurgeHook": {
       "address": "0xb18fA0cb5DE8cecB8899AAE6e38b1B7ed77885dA",
       "startBlock": 21791079
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xE9B0a3bc48178D7FE2F5453C8bc1415d73F966d0",
+      "startBlock": 22046343
     }
   },
   "gnosis": {
@@ -41,6 +45,10 @@
     "StableSurgeHook": {
       "address": "0xe4f1878eC9710846E2B529C1b5037F8bA94583b1",
       "startBlock": 38432088
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xEa924b45a3fcDAAdf4E5cFB1665823B8F8F2039B",
+      "startBlock": 39033094
     }
   },
   "sepolia": {
@@ -65,8 +73,8 @@
       "startBlock": 7734971
     },
     "GyroECLPPoolFactory": {
-      "address": "0x2255b6a03A6eDd0D6CC670864F297869063FE00F",
-      "startBlock": 7734914
+      "address": "0x589cA6855C348d831b394676c25B125BcdC7F8ce",
+      "startBlock": 7901684
     },
     "StableSurgeHook": {
       "address": "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9",
@@ -97,6 +105,10 @@
     "StableSurgeHook": {
       "address": "0x0Fa0f9990D7969a7aE6f9961d663E4A201Ed6417",
       "startBlock": 303403113
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x88ED12A90142fDBFe2a28f7d5b48927254C7e760",
+      "startBlock": 315658096
     }
   },
   "base": {
@@ -119,6 +131,10 @@
     "StableSurgeHook": {
       "address": "0xb2007B8B7E0260042517f635CFd8E6dD2Dd7f007",
       "startBlock": 26049433
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x5F6848976C2914403B425F18B589A65772F082E3",
+      "startBlock": 27590349
     }
   },
   "sonic": {
@@ -141,6 +157,10 @@
     "StableSurgeHook": {
       "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
       "startBlock": 8689861
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xf023731dD8758D7C869af10005e6380Cb57775a9",
+      "startBlock": 14211027
     }
   }
 }
