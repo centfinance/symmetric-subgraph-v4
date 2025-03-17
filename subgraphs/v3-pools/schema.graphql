@@ -43,8 +43,8 @@ type QuantAMMWeightedParams @entity {
   oracleStalenessThreshold: BigInt!
   "Pool registry"
   poolRegistry: BigInt!
-  "Rule parameters"
-  ruleParameters: [[BigInt!]!]!
+  # "Rule parameters"
+  # ruleParameters: [[BigInt!]!]!
   "Lambda values"
   lambda: [BigInt!]!
   "Maximum epsilon value"

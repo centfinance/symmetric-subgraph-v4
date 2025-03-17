@@ -56,7 +56,7 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   params.absoluteWeightGuardRail = immutableData.absoluteWeightGuardRail;
   params.oracleStalenessThreshold = immutableData.oracleStalenessThreshold;
   params.maxTradeSizeRatio = immutableData.maxTradeSizeRatio;
-  params.ruleParameters = immutableData.ruleParameters;
+  // params.ruleParameters = immutableData.ruleParameters;
   params.updateInterval = immutableData.updateInterval;
   params.poolRegistry = immutableData.poolRegistry;
   params.epsilonMax = immutableData.epsilonMax;
