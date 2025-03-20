@@ -5,6 +5,7 @@ enum PoolType {
   StableSurge
   Gyro2
   GyroE
+  LBP
 }
 
 type Factory @entity {
@@ -109,6 +110,31 @@ type GyroEParams @entity {
   dSq: BigDecimal!
 }
 
+type LBPParams @entity {
+  "Unique identifier for the LBPParams"
+  id: Bytes!
+  "Owner of the LBP"
+  owner: Bytes!
+  "Project token for the LBP"
+  projectToken: Bytes!
+  "Reserve token for the LBP"
+  reserveToken: Bytes!
+  "Initial weight of the project token"
+  projectTokenStartWeight: BigInt!
+  "Initial weight of the reserve token"
+  reserveTokenStartWeight: BigInt!
+  "Final weight of the project token"
+  projectTokenEndWeight: BigInt!
+  "Final weight of the reserve token"
+  reserveTokenEndWeight: BigInt!
+  "Start time of the LBP"
+  startTime: BigInt!
+  "End time of the LBP"
+  endTime: BigInt!
+  " Project token swap in blocked"
+  isProjectTokenSwapInBlocked: Boolean!
+}
+
 type Pool @entity {
   "Unique identifier for the Pool"
   id: Bytes!
@@ -128,4 +154,6 @@ type Pool @entity {
   gyroEParams: GyroEParams
   "Parameters for QuantAMMWeighted pools (null for other pool types)"
   quantAMMWeightedParams: QuantAMMWeightedParams
+  "Parameters for LBP pools (null for other pool types)"
+  lbpParams: LBPParams
 }

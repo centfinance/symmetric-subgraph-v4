@@ -76,8 +76,8 @@ dataSources:
     network: sepolia
     source:
       abi: BasePoolFactory
-      address: "0x2255b6a03A6eDd0D6CC670864F297869063FE00F"
-      startBlock: 7734914
+      address: "0x589cA6855C348d831b394676c25B125BcdC7F8ce"
+      startBlock: 7901684
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -140,3 +140,26 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleQuantAMMWeightedPoolCreated
       file: ./src/mappings/quantamm.ts
+  - kind: ethereum
+    name: LBPoolFactory
+    network: sepolia
+    source:
+      abi: BasePoolFactory
+      address: "0xA714753434481DbaBf7921963f18190636eCde69"
+      startBlock: 7831623
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolCreated
+      file: ./src/mappings/lbp.ts
