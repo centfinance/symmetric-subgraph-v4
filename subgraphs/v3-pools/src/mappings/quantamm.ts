@@ -51,6 +51,7 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
       details.category = category;
       details.type = poolDetailResult.value.value0;
       details.value = poolDetailResult.value.value1;
+      details.pool = params.id;
       details.save();
     }
   }
