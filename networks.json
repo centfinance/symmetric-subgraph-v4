@@ -83,6 +83,10 @@
     "QuantAMMWeightedPoolFactory": {
       "address": "0x23920dFC349c55F535D1020dcaBFEf4E80b9680b",
       "startBlock": 7873395
+    },
+    "LBPoolFactory": {
+      "address": "0xA714753434481DbaBf7921963f18190636eCde69",
+      "startBlock": 7831623
     }
   },
   "arbitrum-one": {
