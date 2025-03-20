@@ -10,6 +10,7 @@ export namespace PoolType {
   export const StableSurge = "StableSurge";
   export const Gyro2 = "Gyro2";
   export const GyroE = "GyroE";
+  export const LBP = "LBP";
 }
 
 export function createBasePool(

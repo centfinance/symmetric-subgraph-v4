@@ -122,8 +122,8 @@ dataSources:
     network: sepolia
     source:
       abi: BasePoolFactory
-      address: "0x23920dFC349c55F535D1020dcaBFEf4E80b9680b"
-      startBlock: 7873395
+      address: "0x611C4A8c8479FA2Ec6dCE287F0adBFF694d599e9"
+      startBlock: 7920154
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -139,7 +139,7 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleQuantAMMWeightedPoolCreated
-      file: ./src/mappings/quantamm-weighted.ts
+      file: ./src/mappings/quantamm.ts
   - kind: ethereum
     name: LBPoolFactory
     network: sepolia
