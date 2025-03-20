@@ -150,5 +150,5 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleQuantAMMWeightedPoolCreated
-      file: ./src/mappings/quantamm-weighted.ts
+      file: ./src/mappings/quantamm.ts
   {{/if}}
