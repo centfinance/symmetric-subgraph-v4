@@ -23,6 +23,10 @@
     "GyroECLPPoolFactory": {
       "address": "0xE9B0a3bc48178D7FE2F5453C8bc1415d73F966d0",
       "startBlock": 22046343
+    },
+    "LBPoolFactory": {
+      "address": "0x4eff2d77D9fFbAeFB4b141A3e494c085b3FF4Cb5",
+      "startBlock": 21974368
     }
   },
   "gnosis": {
@@ -49,6 +53,10 @@
     "GyroECLPPoolFactory": {
       "address": "0xEa924b45a3fcDAAdf4E5cFB1665823B8F8F2039B",
       "startBlock": 39033094
+    },
+    "LBPoolFactory": {
+      "address": "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F",
+      "startBlock": 38862663
     }
   },
   "sepolia": {
@@ -113,6 +121,10 @@
     "GyroECLPPoolFactory": {
       "address": "0x88ED12A90142fDBFe2a28f7d5b48927254C7e760",
       "startBlock": 315658096
+    },
+    "LBPoolFactory": {
+      "address": "0x4BB42f71CAB7Bd13e9f958dA4351B9fa2d3A42FF",
+      "startBlock": 312191153
     }
   },
   "base": {
@@ -139,6 +151,10 @@
     "GyroECLPPoolFactory": {
       "address": "0x5F6848976C2914403B425F18B589A65772F082E3",
       "startBlock": 27590349
+    },
+    "LBPoolFactory": {
+      "address": "0x662112B8CB18889e81459b92CA0f894a2ef2c1B8",
+      "startBlock": 27155451
     }
   },
   "sonic": {
