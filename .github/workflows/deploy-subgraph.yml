@@ -15,9 +15,6 @@ on:
     secrets:
       GRAPH_DEPLOY_KEY:
         required: true
-    outputs:
-      deployment_id:
-        value: ${{ jobs.deploy.outputs.deployment_id }}
 
 jobs:
   deploy:
@@ -53,7 +50,7 @@ jobs:
       - name: Graph Codegen
         id: graph-codegen
         working-directory: ${{ inputs.working-directory }}
-        run: pnpm codegen ${{ inputs.manifest-file }}
+        run: pnpm codegen subgraph.sepolia.yaml
 
       - name: Graph Build
         id: graph-build
@@ -69,10 +66,3 @@ jobs:
             ${{ inputs.subgraph-name }} \
             ${{ inputs.manifest-file }} \
             --version-label ${GITHUB_SHA::8} > deployment.log 2>&1
-
-      - name: Deployment ID
-        id: extract-id
-        working-directory: ${{ inputs.working-directory }}
-        run: |
-          DEPLOY_ID=$(grep "Build completed:" deployment.log | awk '{print $3}')
-          echo "deployment_id=${DEPLOY_ID}" >> $GITHUB_OUTPUT
