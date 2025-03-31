@@ -8,7 +8,7 @@ dataSources:
     source:
       abi: Vault
       address: "0xba1333333333cbcdB5D83c2e5d1D898E07eD00Dc"
-      startBlock: 59388625
+      startBlock: 59388624
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
