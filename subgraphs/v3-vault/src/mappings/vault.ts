@@ -393,16 +393,14 @@ export function handleSwap(event: SwapEvent): void {
     aggregateSwapFeeAmount
   );
 
+  poolTokenIn.totalStaticSwapFee =
+    poolTokenIn.totalStaticSwapFee.plus(swapFeeAmount);
+  poolTokenIn.totalSwapFeeBase =
+    poolTokenIn.totalSwapFeeBase.plus(swapFeeBaseAmount);
+
   if (hasDynamicSwapFee) {
     poolTokenIn.totalDynamicSwapFee =
       poolTokenIn.totalDynamicSwapFee.plus(swapFeeAmount);
-    poolTokenIn.totalSwapFeeBase =
-      poolTokenIn.totalSwapFeeBase.plus(swapFeeBaseAmount);
-    poolTokenIn.totalSwapFeeDelta =
-      poolTokenIn.totalSwapFeeDelta.plus(swapFeeDeltaAmount);
-  } else {
-    poolTokenIn.totalStaticSwapFee =
-      poolTokenIn.totalStaticSwapFee.plus(swapFeeAmount);
   }
 
   poolTokenIn.save();
