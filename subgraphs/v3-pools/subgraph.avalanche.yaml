@@ -26,6 +26,29 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
+    name: StablePoolV2Factory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x1702067424096F07A60e62cceE3dE9420068492D"
+      startBlock: 59395784
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolCreated
+      file: ./src/mappings/stable.ts
+  - kind: ethereum
     name: GyroECLPPoolFactory
     network: avalanche
     source:
