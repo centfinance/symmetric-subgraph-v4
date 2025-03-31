@@ -1,0 +1,50 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: WeightedPoolFactory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x7Ba29fE8E83dd6097A7298075C4AFfdBda3121cC"
+      startBlock: 59394296
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolCreated
+      file: ./src/mappings/weighted.ts
+  - kind: ethereum
+    name: GyroECLPPoolFactory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x83E443EF4f9963C77bd860f94500075556668cb8"
+      startBlock: 59394837
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: GyroECLPPool
+          file: ./abis/GyroECLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyroEPoolCreated
+      file: ./src/mappings/gyroE.ts

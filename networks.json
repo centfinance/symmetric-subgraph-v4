@@ -182,5 +182,28 @@
       "address": "0xf023731dD8758D7C869af10005e6380Cb57775a9",
       "startBlock": 14211027
     }
+  },
+
+  "avalanche": {
+    "Vault": {
+      "address": "0xba1333333333cbcdB5D83c2e5d1D898E07eD00Dc",
+      "startBlock": 59388625
+    },
+    "ProtocolFeeController": {
+      "address": "0x8de13A85136982F7a0F9E6836e98803de138fb88",
+      "startBlock": 59388449
+    },
+    "WeightedPoolFactory": {
+      "address": "0x7Ba29fE8E83dd6097A7298075C4AFfdBda3121cC",
+      "startBlock": 59394296
+    },
+    "StablePoolV2Factory": {
+      "address": "0x1702067424096F07A60e62cceE3dE9420068492D",
+      "startBlock": 59395784
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x83E443EF4f9963C77bd860f94500075556668cb8",
+      "startBlock": 59394837
+    }
   }
 }
