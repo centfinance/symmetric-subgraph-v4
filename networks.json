@@ -16,6 +16,10 @@
       "address": "0xB9d01CA61b9C181dA1051bFDd28e1097e920AB14",
       "startBlock": 21337005
     },
+    "StablePoolV2Factory": {
+      "address": "0xe42C2E153BB0A8899b59C73F5Ff941f9742F1197",
+      "startBlock": 22089887
+    },
     "StableSurgeHook": {
       "address": "0xb18fA0cb5DE8cecB8899AAE6e38b1B7ed77885dA",
       "startBlock": 21791079
@@ -46,6 +50,10 @@
       "address": "0x22625eEDd92c81a219A83e1dc48f88d54786B017",
       "startBlock": 37371860
     },
+    "StablePoolV2Factory": {
+      "address": "0x161f4014C27773840ccb4EC1957113e6DD028846",
+      "startBlock": 39136290
+    },
     "StableSurgeHook": {
       "address": "0xe4f1878eC9710846E2B529C1b5037F8bA94583b1",
       "startBlock": 38432088
@@ -75,6 +83,10 @@
     "StablePoolFactory": {
       "address": "0xd67F485C07D258B3e93835a3799d862ffcB55923",
       "startBlock": 7216947
+    },
+    "StablePoolV2Factory": {
+      "address": "0xc274A11E09a3c92Ac64eAff5bEC4ee8f5dfEe207",
+      "startBlock": 7944011
     },
     "Gyro2CLPPoolFactory": {
       "address": "0x5aD57d8BC854449bb85D7EA8B164f1cE266EC5a4",
@@ -114,6 +126,10 @@
       "address": "0xEB1eeaBF0126d813589C3D2CfeFFE410D9aE3863",
       "startBlock": 297829373
     },
+    "StablePoolV2Factory": {
+      "address": "0x44d33798dddCdAbc93Fe6a40C80588033Dc502d3",
+      "startBlock": 317750010
+    },
     "StableSurgeHook": {
       "address": "0x0Fa0f9990D7969a7aE6f9961d663E4A201Ed6417",
       "startBlock": 303403113
@@ -144,6 +160,10 @@
       "address": "0xb9F8AB3ED3F3aCBa64Bc6cd2DcA74B7F38fD7B88",
       "startBlock": 25347318
     },
+    "StablePoolV2Factory": {
+      "address": "0xC49Ca921c4CD1117162eAEEc0ee969649997950c",
+      "startBlock": 27852880
+    },
     "StableSurgeHook": {
       "address": "0xb2007B8B7E0260042517f635CFd8E6dD2Dd7f007",
       "startBlock": 26049433
@@ -173,6 +193,10 @@
     "StablePoolFactory": {
       "address": "0x815Ab57a5a2E4976cEC0b43C2D50CF26EF6F31Fd",
       "startBlock": 381473
+    },
+    "StablePoolV2Factory": {
+      "address": "0x482eE54595f79B6BA34b75754A4983134148Affb",
+      "startBlock": 17236613
     },
     "StableSurgeHook": {
       "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
