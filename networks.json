@@ -24,6 +24,10 @@
       "address": "0xb18fA0cb5DE8cecB8899AAE6e38b1B7ed77885dA",
       "startBlock": 21791079
     },
+    "Gyro2CLPPoolFactory": {
+      "address": "0xb96524227c4B5Ab908FC3d42005FE3B07abA40E9",
+      "startBlock": 22188963
+    },
     "GyroECLPPoolFactory": {
       "address": "0xE9B0a3bc48178D7FE2F5453C8bc1415d73F966d0",
       "startBlock": 22046343
@@ -58,6 +62,10 @@
       "address": "0xe4f1878eC9710846E2B529C1b5037F8bA94583b1",
       "startBlock": 38432088
     },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x7fA49Df302a98223d98D115fc4FCD275576f6faA",
+      "startBlock": 39369934
+    },
     "GyroECLPPoolFactory": {
       "address": "0xEa924b45a3fcDAAdf4E5cFB1665823B8F8F2039B",
       "startBlock": 39033094
@@ -89,8 +97,8 @@
       "startBlock": 7944011
     },
     "Gyro2CLPPoolFactory": {
-      "address": "0x5aD57d8BC854449bb85D7EA8B164f1cE266EC5a4",
-      "startBlock": 7734971
+      "address": "0x38ce8e04EBC04A39BED4b097e8C9bb8Ca74e33d8",
+      "startBlock": 8042511
     },
     "GyroECLPPoolFactory": {
       "address": "0x589cA6855C348d831b394676c25B125BcdC7F8ce",
@@ -130,6 +138,10 @@
       "address": "0x44d33798dddCdAbc93Fe6a40C80588033Dc502d3",
       "startBlock": 317750010
     },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x65A22Ec32c37835Ad5E77Eb6f7452Ac59E113a9F",
+      "startBlock": 322520182
+    },
     "StableSurgeHook": {
       "address": "0x0Fa0f9990D7969a7aE6f9961d663E4A201Ed6417",
       "startBlock": 303403113
@@ -163,6 +175,10 @@
     "StablePoolV2Factory": {
       "address": "0xC49Ca921c4CD1117162eAEEc0ee969649997950c",
       "startBlock": 27852880
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0xf5CDdF6feD9C589f1Be04899F48f9738531daD59",
+      "startBlock": 28450062
     },
     "StableSurgeHook": {
       "address": "0xb2007B8B7E0260042517f635CFd8E6dD2Dd7f007",
@@ -198,6 +214,10 @@
       "address": "0x482eE54595f79B6BA34b75754A4983134148Affb",
       "startBlock": 17236613
     },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x4D1F5C8E3A7B9C6D5FfE0dA4aB1b8c7e9D2F3b6B",
+      "startBlock": 17236613
+    },
     "StableSurgeHook": {
       "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
       "startBlock": 8689861
@@ -207,7 +227,6 @@
       "startBlock": 14211027
     }
   },
-
   "avalanche": {
     "Vault": {
       "address": "0xba1333333333cbcdB5D83c2e5d1D898E07eD00Dc",
@@ -225,9 +244,17 @@
       "address": "0x1702067424096F07A60e62cceE3dE9420068492D",
       "startBlock": 59395784
     },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x8e3fEaAB11b7B351e3EA1E01247Ab6ccc847dD52",
+      "startBlock": 59658826
+    },
     "GyroECLPPoolFactory": {
       "address": "0x83E443EF4f9963C77bd860f94500075556668cb8",
       "startBlock": 59394837
+    },
+    "LBPoolFactory": {
+      "address": "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925",
+      "startBlock": 59395203
     }
   }
 }
