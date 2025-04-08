@@ -141,6 +141,29 @@ dataSources:
           handler: handleStableSurgeHookRegistered
       file: ./src/mappings/surge.ts
   - kind: ethereum
+    name: StableSurgeHookV2
+    network: mainnet
+    source:
+      abi: StableSurgeHook
+      address: "0xBDbADc891BB95DEE80eBC491699228EF0f7D6fF1"
+      startBlock: 22195509
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV2Registered
+      file: ./src/mappings/surge.ts
+  - kind: ethereum
     name: LBPoolFactory
     network: mainnet
     source:
