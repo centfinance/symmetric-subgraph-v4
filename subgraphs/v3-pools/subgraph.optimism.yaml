@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: gnosis
+    network: optimism
     source:
       abi: BasePoolFactory
-      address: "0xEB1eeaBF0126d813589C3D2CfeFFE410D9aE3863"
-      startBlock: 37371691
+      address: "0x0f08eEf2C785AA5e7539684aF04755dEC1347b7c"
+      startBlock: 133969639
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -26,35 +26,12 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
-    name: StablePoolFactory
-    network: gnosis
-    source:
-      abi: BasePoolFactory
-      address: "0x22625eEDd92c81a219A83e1dc48f88d54786B017"
-      startBlock: 37371860
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: StablePool
-          file: ./abis/StablePool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleStablePoolCreated
-      file: ./src/mappings/stable.ts
-  - kind: ethereum
     name: StablePoolV2Factory
-    network: gnosis
+    network: optimism
     source:
       abi: BasePoolFactory
-      address: "0x161f4014C27773840ccb4EC1957113e6DD028846"
-      startBlock: 39136290
+      address: "0x268E2EE1413D768b6e2dc3F5a4ddc9Ae03d9AF42"
+      startBlock: 133969860
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -73,11 +50,11 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
-    network: gnosis
+    network: optimism
     source:
       abi: BasePoolFactory
-      address: "0x7fA49Df302a98223d98D115fc4FCD275576f6faA"
-      startBlock: 39369934
+      address: "0x4b979eD48F982Ba0baA946cB69c1083eB799729c"
+      startBlock: 134045195
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -96,11 +73,11 @@ dataSources:
       file: ./src/mappings/gyro2.ts
   - kind: ethereum
     name: GyroECLPPoolFactory
-    network: gnosis
+    network: optimism
     source:
       abi: BasePoolFactory
-      address: "0xEa924b45a3fcDAAdf4E5cFB1665823B8F8F2039B"
-      startBlock: 39033094
+      address: "0x22625eEDd92c81a219A83e1dc48f88d54786B017"
+      startBlock: 133969692
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -118,35 +95,12 @@ dataSources:
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
-    name: StableSurgeHook
-    network: gnosis
-    source:
-      abi: StableSurgeHook
-      address: "0xe4f1878eC9710846E2B529C1b5037F8bA94583b1"
-      startBlock: 38432088
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: StablePool
-          file: ./abis/StablePool.json
-        - name: StableSurgeHook
-          file: ./abis/StableSurgeHook.json
-      eventHandlers:
-        - event: StableSurgeHookRegistered(indexed address,indexed address)
-          handler: handleStableSurgeHookRegistered
-      file: ./src/mappings/surge.ts
-  - kind: ethereum
     name: LBPoolFactory
-    network: gnosis
+    network: optimism
     source:
       abi: BasePoolFactory
-      address: "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F"
-      startBlock: 38862663
+      address: "0xC1A64500E035D9159C8826E982dFb802003227f0"
+      startBlock: 133969827
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

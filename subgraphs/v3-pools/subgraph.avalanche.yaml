@@ -49,6 +49,29 @@ dataSources:
           handler: handleStablePoolCreated
       file: ./src/mappings/stable.ts
   - kind: ethereum
+    name: Gyro2CLPPoolFactory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x8e3fEaAB11b7B351e3EA1E01247Ab6ccc847dD52"
+      startBlock: 59658826
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: Gyro2CLPPool
+          file: ./abis/Gyro2CLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyro2PoolCreated
+      file: ./src/mappings/gyro2.ts
+  - kind: ethereum
     name: GyroECLPPoolFactory
     network: avalanche
     source:
@@ -71,3 +94,26 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
+  - kind: ethereum
+    name: LBPoolFactory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925"
+      startBlock: 59395203
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolCreated
+      file: ./src/mappings/lbp.ts
