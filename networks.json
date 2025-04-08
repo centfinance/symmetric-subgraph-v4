@@ -256,5 +256,35 @@
       "address": "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925",
       "startBlock": 59395203
     }
+  },
+  "optimism": {
+    "Vault": {
+      "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
+      "startBlock": 133969439
+    },
+    "ProtocolFeeController": {
+      "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
+      "startBlock": 133969430
+    },
+    "WeightedPoolFactory": {
+      "address": "0x0f08eEf2C785AA5e7539684aF04755dEC1347b7c",
+      "startBlock": 133969639
+    },
+    "StablePoolV2Factory": {
+      "address": "0x268E2EE1413D768b6e2dc3F5a4ddc9Ae03d9AF42",
+      "startBlock": 133969860
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x4b979eD48F982Ba0baA946cB69c1083eB799729c",
+      "startBlock": 134045195
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x22625eEDd92c81a219A83e1dc48f88d54786B017",
+      "startBlock": 133969692
+    },
+    "LBPoolFactory": {
+      "address": "0xC1A64500E035D9159C8826E982dFb802003227f0",
+      "startBlock": 133969827
+    }
   }
 }
