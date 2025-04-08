@@ -65,4 +65,4 @@ jobs:
             --deploy-key ${{ secrets.GRAPH_DEPLOY_KEY }} \
             ${{ inputs.subgraph-name }} \
             ${{ inputs.manifest-file }} \
-            --version-label ${GITHUB_SHA::8} > deployment.log 2>&1
+            --version-label ${GITHUB_SHA::8}

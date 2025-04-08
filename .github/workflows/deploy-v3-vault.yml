@@ -4,6 +4,8 @@ on:
     branches: main
     paths:
       - "subgraphs/v3-vault/**"
+  workflow_dispatch:
+
 jobs:
   deploy-mainnet:
     uses: ./.github/workflows/deploy-subgraph.yml
