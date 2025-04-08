@@ -95,6 +95,29 @@ dataSources:
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
+    name: StableSurgeHookV2
+    network: avalanche
+    source:
+      abi: StableSurgeHook
+      address: "0xaD89051bEd8d96f045E8912aE1672c6C0bF8a85E"
+      startBlock: 59702907
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV2Registered
+      file: ./src/mappings/surge.ts
+  - kind: ethereum
     name: LBPoolFactory
     network: avalanche
     source:

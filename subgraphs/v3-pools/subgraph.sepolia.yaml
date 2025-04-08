@@ -141,6 +141,29 @@ dataSources:
           handler: handleStableSurgeHookRegistered
       file: ./src/mappings/surge.ts
   - kind: ethereum
+    name: StableSurgeHookV2
+    network: sepolia
+    source:
+      abi: StableSurgeHook
+      address: "0x7dfca838fD5fCd70f876431D41CaA3E3E2ea1520"
+      startBlock: 8048919
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV2Registered
+      file: ./src/mappings/surge.ts
+  - kind: ethereum
     name: QuantAMMWeightedPoolFactory
     network: sepolia
     source:
