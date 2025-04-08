@@ -74,7 +74,7 @@ dataSources:
           file: ./abis/BasePoolFactory.json
       eventHandlers:
         - event: PoolCreated(indexed address)
-          handler: handleStablePoolCreated
+          handler: handleStablePoolV2Created
       file: ./src/mappings/stable.ts
   {{/if}}
   {{#if Gyro2CLPPoolFactory}}
@@ -150,6 +150,31 @@ dataSources:
       eventHandlers:
         - event: StableSurgeHookRegistered(indexed address,indexed address)
           handler: handleStableSurgeHookRegistered
+      file: ./src/mappings/surge.ts
+  {{/if}}
+  {{#if StableSurgeHookV2}}
+  - kind: ethereum
+    name: StableSurgeHookV2
+    network: {{ network }}
+    source:
+      abi: StableSurgeHook
+      address: "{{ StableSurgeHookV2.address }}"
+      startBlock: {{ StableSurgeHookV2.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   {{/if}}
   {{#if QuantAMMWeightedPoolFactory}}

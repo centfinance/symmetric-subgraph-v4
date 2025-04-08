@@ -28,3 +28,14 @@ export function handleStablePoolCreated(event: PoolCreated): void {
     "stableParams"
   );
 }
+
+export function handleStablePoolV2Created(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.Stable,
+    2,
+    handleStablePoolParams,
+    "stableParams"
+  );
+}
