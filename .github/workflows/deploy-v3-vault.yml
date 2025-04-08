@@ -67,3 +67,12 @@ jobs:
       manifest-file: subgraph.avalanche.yaml
     secrets:
       GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+
+  deploy-optimism:
+    uses: ./.github/workflows/deploy-subgraph.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v3-optimism
+      manifest-file: subgraph.optimism.yaml
+    secrets:
+      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
