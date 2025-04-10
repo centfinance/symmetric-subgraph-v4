@@ -249,36 +249,36 @@
   },
   "avalanche": {
     "Vault": {
-      "address": "0xba1333333333cbcdB5D83c2e5d1D898E07eD00Dc",
-      "startBlock": 59388624
+      "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
+      "startBlock": 59955604
     },
     "ProtocolFeeController": {
-      "address": "0x8de13A85136982F7a0F9E6836e98803de138fb88",
-      "startBlock": 59388449
+      "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "startBlock": 59955604
     },
     "WeightedPoolFactory": {
-      "address": "0x7Ba29fE8E83dd6097A7298075C4AFfdBda3121cC",
-      "startBlock": 59394295
+      "address": "0xD961E30156C2E0D0d925A0De45f931CB7815e970",
+      "startBlock": 59965815
     },
     "StablePoolV2Factory": {
-      "address": "0x1702067424096F07A60e62cceE3dE9420068492D",
-      "startBlock": 59395784
+      "address": "0xEAedc32a51c510d35ebC11088fD5fF2b47aACF2E",
+      "startBlock": 59966208
     },
     "StableSurgeHookV2": {
-      "address": "0xaD89051bEd8d96f045E8912aE1672c6C0bF8a85E",
-      "startBlock": 59702907
+      "address": "0x86705Ee19c0509Ff68F1118C55ee2ebdE383D122",
+      "startBlock": 59966257
     },
     "Gyro2CLPPoolFactory": {
-      "address": "0x8e3fEaAB11b7B351e3EA1E01247Ab6ccc847dD52",
-      "startBlock": 59658826
+      "address": "0xe2fa4e1d17725e72dcdAfe943Ecf45dF4B9E285b",
+      "startBlock": 59965891
     },
     "GyroECLPPoolFactory": {
-      "address": "0x83E443EF4f9963C77bd860f94500075556668cb8",
-      "startBlock": 59394837
+      "address": "0x268E2EE1413D768b6e2dc3F5a4ddc9Ae03d9AF42",
+      "startBlock": 59965989
     },
     "LBPoolFactory": {
-      "address": "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925",
-      "startBlock": 59395203
+      "address": "0x3BEb058DE1A25dd24223fd9e1796df8589429AcE",
+      "startBlock": 59966145
     }
   },
   "optimism": {
