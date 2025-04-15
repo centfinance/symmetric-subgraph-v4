@@ -214,8 +214,8 @@ dataSources:
     network: sepolia
     source:
       abi: BasePoolFactory
-      address: "0x7375Fe537BAbD60fe49EDB70740787CD20f21523"
-      startBlock: 8119679
+      address: "0xC34978818FE7B25dcbea848660D4821645e3dA5b"
+      startBlock: 8123659
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -256,6 +256,6 @@ templates:
           handler: handleReClammPriceRatioStateUpdated
         - event: PriceShiftDailyRateUpdated(uint256,uint256)
           handler: handleReClammPriceShiftDailyRateUpdated
-        - event: VirtualBalancesUpdated(uint256[])
+        - event: VirtualBalancesUpdated(uint256,uint256)
           handler: handleReClammVirtualBalancesUpdated
       file: ./src/mappings/reclamm.ts
