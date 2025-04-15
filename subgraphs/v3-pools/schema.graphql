@@ -6,6 +6,7 @@ enum PoolType {
   Gyro2
   GyroE
   LBP
+  Reclamm
 }
 
 type Factory @entity {
@@ -131,8 +132,31 @@ type LBPParams @entity {
   startTime: BigInt!
   "End time of the LBP"
   endTime: BigInt!
-  " Project token swap in blocked"
+  "Project token swap in blocked"
   isProjectTokenSwapInBlocked: Boolean!
+}
+
+type ReClammParams @entity {
+  "Unique identifier for the ReClammParams"
+  id: Bytes!
+  "The timestamp of the last user interaction"
+  lastTimestamp: BigInt!
+  "The last virtual balances of the pool"
+  lastVirtualBalances: [BigInt!]!
+  "Represents how fast the pool can move the virtual balances per day"
+  priceShiftDailyRateInSeconds: BigInt!
+  "The centeredness margin of the pool"
+  centerednessMargin: BigInt!
+  "The current fourth root price ratio, an interpolation of the price ratio state"
+  currentFourthRootPriceRatio: BigInt!
+  "The fourth root price ratio at the start of an update"
+  startFourthRootPriceRatio: BigInt!
+  "The fourth root price ratio at the end of an update"
+  endFourthRootPriceRatio: BigInt!
+  "The timestamp when the update begins"
+  priceRatioUpdateStartTime: BigInt!
+  "The timestamp when the update ends"
+  priceRatioUpdateEndTime: BigInt!
 }
 
 type Pool @entity {
@@ -156,4 +180,6 @@ type Pool @entity {
   quantAMMWeightedParams: QuantAMMWeightedParams
   "Parameters for LBP pools (null for other pool types)"
   lbpParams: LBPParams
+  "Parameters for ReClamm pools (null for other pool types)"
+  reClammParams: ReClammParams
 }
