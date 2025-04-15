@@ -140,4 +140,3 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleLBPoolCreated
       file: ./src/mappings/lbp.ts
-templates:

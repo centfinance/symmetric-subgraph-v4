@@ -6,7 +6,7 @@ enum PoolType {
   Gyro2
   GyroE
   LBP
-  Reclamm
+  ReClamm
 }
 
 type Factory @entity {

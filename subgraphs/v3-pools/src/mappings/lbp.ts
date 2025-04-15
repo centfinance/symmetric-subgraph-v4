@@ -4,9 +4,6 @@ import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/LBPoolFactory/BasePoolFactory";
 import { LBPool } from "../types/LBPoolFactory/LBPool";
 import { LBPParams } from "../types/schema";
-import { scaleDown } from "../helpers/math";
-
-let ONE = BigInt.fromString("1");
 
 function handleLBPoolParams(poolAddress: Address): Bytes {
   let lbp = LBPool.bind(poolAddress);
