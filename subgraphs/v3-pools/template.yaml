@@ -227,3 +227,57 @@ dataSources:
           handler: handleLBPoolCreated
       file: ./src/mappings/lbp.ts
   {{/if}}
+  {{#if ReClammPoolFactory}}
+  - kind: ethereum
+    name: ReClammPoolFactory
+    network: {{ network }}
+    source:
+      abi: BasePoolFactory
+      address: "{{ ReClammPoolFactory.address }}"
+      startBlock: {{ ReClammPoolFactory.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleReClammPoolCreated
+      file: ./src/mappings/reclamm.ts
+  {{/if}}
+templates:
+  {{#if ReClammPoolFactory}}
+  - kind: ethereum/contract
+    name: ReClammPool
+    network: {{ network }}
+    source:
+      abi: ReClammPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ReClammParams
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+      eventHandlers:
+        - event: CenterednessMarginUpdated(uint256)
+          handler: handleReClammCenterednessMarginUpdated
+        - event: LastTimestampUpdated(uint32)
+          handler: handleReClammLastTimestampUpdated
+        - event: PriceRatioStateUpdated(uint256,uint256,uint256,uint256)
+          handler: handleReClammPriceRatioStateUpdated
+        - event: PriceShiftDailyRateUpdated(uint256,uint256)
+          handler: handleReClammPriceShiftDailyRateUpdated
+        - event: VirtualBalancesUpdated(uint256[])
+          handler: handleReClammVirtualBalancesUpdated
+      file: ./src/mappings/reclamm.ts
+  {{/if}}
