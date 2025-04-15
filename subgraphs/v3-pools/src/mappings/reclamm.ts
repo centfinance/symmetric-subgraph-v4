@@ -71,7 +71,10 @@ export function handleReClammVirtualBalancesUpdated(
   event: VirtualBalancesUpdated
 ): void {
   let pool = ReClammParams.load(event.address) as ReClammParams;
-  pool.lastVirtualBalances = event.params.virtualBalances;
+  pool.lastVirtualBalances = [
+    event.params.virtualBalanceA,
+    event.params.virtualBalanceB,
+  ];
   pool.save();
 }
 
