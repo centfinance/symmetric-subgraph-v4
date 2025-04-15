@@ -140,4 +140,3 @@ dataSources:
         - event: StableSurgeHookRegistered(indexed address,indexed address)
           handler: handleStableSurgeHookRegistered
       file: ./src/mappings/surge.ts
-templates:

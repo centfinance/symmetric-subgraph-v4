@@ -252,8 +252,8 @@ dataSources:
           handler: handleReClammPoolCreated
       file: ./src/mappings/reclamm.ts
   {{/if}}
+{{#if ReClammPoolFactory}}
 templates:
-  {{#if ReClammPoolFactory}}
   - kind: ethereum/contract
     name: ReClammPool
     network: {{ network }}
@@ -280,4 +280,4 @@ templates:
         - event: VirtualBalancesUpdated(uint256[])
           handler: handleReClammVirtualBalancesUpdated
       file: ./src/mappings/reclamm.ts
-  {{/if}}
+{{/if}}
