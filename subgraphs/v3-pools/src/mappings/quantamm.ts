@@ -66,11 +66,15 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   params.lambda = immutableData.lambda;
 
   let dynamicData = pool.getQuantAMMWeightedPoolDynamicData();
-  params.weightsAtLastUpdateInterval = dynamicData.weightsAtLastUpdateInterval;
-  params.weightBlockMultipliers = dynamicData.weightBlockMultipliers;
-  params.lastUpdateIntervalTime = dynamicData.lastUpdateIntervalTime;
-  params.lastInterpolationTimePossible =
-    dynamicData.lastInterpolationTimePossible;
+  params.weightsAtLastUpdateInterval =
+    dynamicData.firstFourWeightsAndMultipliers
+      .slice(0, 4)
+      .concat(dynamicData.secondFourWeightsAndMultipliers.slice(0, 4));
+  params.weightBlockMultipliers = dynamicData.firstFourWeightsAndMultipliers
+    .slice(4, 8)
+    .concat(dynamicData.secondFourWeightsAndMultipliers.slice(4, 8));
+  params.lastInterpolationTimePossible = dynamicData.lastInteropTime;
+  params.lastUpdateIntervalTime = dynamicData.lastUpdateTime;
 
   params.save();
 
