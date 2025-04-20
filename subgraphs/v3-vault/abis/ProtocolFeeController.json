@@ -1,7 +1,21 @@
 [
   {
     "inputs": [
-      { "internalType": "contract IVault", "name": "vault_", "type": "address" }
+      {
+        "internalType": "contract IVault",
+        "name": "vault_",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "initialGlobalSwapFeePercentage",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "initialGlobalYieldFeePercentage",
+        "type": "uint256"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -30,6 +44,14 @@
   },
   { "inputs": [], "name": "FailedInnerCall", "type": "error" },
   { "inputs": [], "name": "FeePrecisionTooHigh", "type": "error" },
+  { "inputs": [], "name": "InvalidMigrationSource", "type": "error" },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "PoolAlreadyRegistered",
+    "type": "error"
+  },
   { "inputs": [], "name": "PoolCreatorFeePercentageTooHigh", "type": "error" },
   {
     "inputs": [
@@ -105,6 +127,56 @@
         "type": "address"
       },
       {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "aggregateSwapFeePercentage",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isProtocolFeeExempt",
+        "type": "bool"
+      }
+    ],
+    "name": "InitialPoolAggregateSwapFeePercentage",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "pool",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "aggregateYieldFeePercentage",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isProtocolFeeExempt",
+        "type": "bool"
+      }
+    ],
+    "name": "InitialPoolAggregateYieldFeePercentage",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "pool",
+        "type": "address"
+      },
+      {
         "indexed": true,
         "internalType": "contract IERC20",
         "name": "token",
@@ -162,6 +234,31 @@
       }
     ],
     "name": "PoolCreatorYieldFeePercentageChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "pool",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "poolCreator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "protocolFeeExempt",
+        "type": "bool"
+      }
+    ],
+    "name": "PoolRegisteredWithFeeController",
     "type": "event"
   },
   {
@@ -387,6 +484,24 @@
     "inputs": [
       { "internalType": "address", "name": "pool", "type": "address" }
     ],
+    "name": "getPoolCreatorSwapFeePercentage",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getPoolCreatorYieldFeePercentage",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
     "name": "getPoolProtocolSwapFeeInfo",
     "outputs": [
       { "internalType": "uint256", "name": "", "type": "uint256" },
@@ -425,6 +540,24 @@
       { "internalType": "contract IVault", "name": "", "type": "address" }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "isPoolRegistered",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "migratePool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

@@ -50,14 +50,33 @@ dataSources:
           handler: handlePoolRecoveryModeStateChanged
         - event: PoolPausedStateChanged(indexed address,bool)
           handler: handlePoolPausedStateChanged
+        - event: ProtocolFeeControllerChanged(indexed address)
+          handler: handleProtocolFeeControllerChanged
       file: ./src/mappings/vault.ts
+templates:
+  - kind: ethereum/contract
+    name: BPT
+    network: avalanche
+    source:
+      abi: BPT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - PoolShare
+      abis:
+        - name: BPT
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mappings/bpt.ts
   - kind: ethereum
     name: ProtocolFeeController
     network: avalanche
     source:
       abi: ProtocolFeeController
-      address: "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8"
-      startBlock: 59955604
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -90,22 +109,3 @@ dataSources:
         - event: ProtocolFeesWithdrawn(indexed address,indexed address,indexed address,uint256)
           handler: handleProtocolFeesWithdrawn
       file: ./src/mappings/controller.ts
-templates:
-  - kind: ethereum/contract
-    name: BPT
-    network: avalanche
-    source:
-      abi: BPT
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - PoolShare
-      abis:
-        - name: BPT
-          file: ./abis/ERC20.json
-      eventHandlers:
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
-      file: ./src/mappings/bpt.ts
