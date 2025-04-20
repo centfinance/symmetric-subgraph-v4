@@ -608,7 +608,7 @@ export function handleSwapFeePercentageChanged(
 ): void {
   let pool = Pool.load(event.params.pool);
   if (!pool) return; // Pool has not been registered yet
-  pool.swapFee = scaleDown(event.params.swapFeePercentage, 18);
+  pool.swapFee = scaleDown(event.params.swapFeePercentage, 11);
   pool.save();
 }
 
