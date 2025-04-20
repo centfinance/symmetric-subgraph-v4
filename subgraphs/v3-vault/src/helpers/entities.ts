@@ -24,19 +24,17 @@ export function getVault(): Vault {
   if (vault != null) return vault;
 
   let vaultContract = VaultExtension.bind(changetype<Address>(VAULT_ADDRESS));
-  let protocolFeeControllerCall = vaultContract.try_getProtocolFeeController();
+  let protocolFeeController = vaultContract.getProtocolFeeController();
 
   vault = new Vault(VAULT_ADDRESS);
   vault.isPaused = false;
   vault.authorizer = ZERO_ADDRESS;
   vault.protocolSwapFee = ZERO_BD;
   vault.protocolYieldFee = ZERO_BD;
-  vault.protocolFeeController = protocolFeeControllerCall.reverted
-    ? ZERO_ADDRESS
-    : protocolFeeControllerCall.value;
+  vault.protocolFeeController = protocolFeeController;
   vault.save();
 
-  ProtocolFeeController.create(vault.protocolFeeController);
+  ProtocolFeeController.create(protocolFeeController);
 
   return vault;
 }
