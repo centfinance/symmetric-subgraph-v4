@@ -1,5 +1,3 @@
-import { Address } from "@graphprotocol/graph-ts";
-
 import { getVault, loadPoolToken } from "../helpers/entities";
 import { Pool } from "../types/schema";
 import { scaleDown } from "../helpers/misc";
@@ -13,7 +11,7 @@ import {
   ProtocolSwapFeePercentageChanged,
   ProtocolYieldFeeCollected,
   ProtocolYieldFeePercentageChanged,
-} from "../types/ProtocolFeeController/ProtocolFeeController";
+} from "../types/templates/ProtocolFeeController/ProtocolFeeController";
 import { ZERO_BD } from "../helpers/constants";
 
 export function handleGlobalProtocolSwapFeePercentageChanged(
