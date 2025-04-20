@@ -15,6 +15,7 @@ import { PoolRegisteredTokenConfigStruct } from "../types/Vault/Vault";
 import { ERC20 } from "../types/Vault/ERC20";
 import { VaultExtension } from "../types/Vault/VaultExtension";
 import { scaleDown } from "./misc";
+import { ProtocolFeeController } from "../types/templates";
 
 const DAY = 24 * 60 * 60;
 
@@ -34,6 +35,8 @@ export function getVault(): Vault {
     ? ZERO_ADDRESS
     : protocolFeeControllerCall.value;
   vault.save();
+
+  ProtocolFeeController.create(vault.protocolFeeController);
 
   return vault;
 }

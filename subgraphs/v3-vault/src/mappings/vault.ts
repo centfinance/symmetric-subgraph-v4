@@ -9,6 +9,7 @@ import {
   PoolPausedStateChanged,
   PoolRecoveryModeStateChanged,
   PoolRegistered,
+  ProtocolFeeControllerChanged,
   Swap as SwapEvent,
   SwapFeePercentageChanged,
   Unwrap,
@@ -36,7 +37,7 @@ import {
 } from "../helpers/entities";
 import { ZERO_ADDRESS, ZERO_BD, ZERO_BI } from "../helpers/constants";
 import { hexToBigInt, scaleDown, scaleUp } from "../helpers/misc";
-import { BPT } from "../types/templates";
+import { BPT, ProtocolFeeController } from "../types/templates";
 import { ERC20 } from "../types/Vault/ERC20";
 import { VaultExtension } from "../types/Vault/VaultExtension";
 import { ERC4626 } from "../types/Vault/ERC4626";
@@ -607,7 +608,7 @@ export function handleSwapFeePercentageChanged(
 ): void {
   let pool = Pool.load(event.params.pool);
   if (!pool) return; // Pool has not been registered yet
-  pool.swapFee = scaleDown(event.params.swapFeePercentage, 18);
+  pool.swapFee = scaleDown(event.params.swapFeePercentage, 11);
   pool.save();
 }
 
@@ -625,4 +626,18 @@ export function handlePoolPausedStateChanged(
   let pool = Pool.load(event.params.pool) as Pool;
   pool.isPaused = event.params.paused;
   pool.save();
+}
+
+/************************************
+ ********* FEE CONTROLLER ***********
+ ************************************/
+
+export function handleProtocolFeeControllerChanged(
+  event: ProtocolFeeControllerChanged
+): void {
+  let vault = getVault();
+  vault.protocolFeeController = event.params.newProtocolFeeController;
+  vault.save();
+
+  ProtocolFeeController.create(event.params.newProtocolFeeController);
 }
