@@ -603,12 +603,21 @@ export function handleWrap(event: Wrap): void {
  ********** POOLS STATE *************
  ************************************/
 
+let FEE_SCALING_FACTOR = BigInt.fromI32(10).pow(11);
+
 export function handleSwapFeePercentageChanged(
   event: SwapFeePercentageChanged
 ): void {
   let pool = Pool.load(event.params.pool);
-  if (!pool) return; // Pool has not been registered yet
-  pool.swapFee = scaleDown(event.params.swapFeePercentage, 11);
+  if (!pool) return;
+
+  // Replicate the smart contract rounding behavior
+  // https://github.com/balancer/balancer-v3-monorepo/blob/0d2de793ea4da7b0750f56ea01c8ea9788801f64/pkg/vault/contracts/lib/PoolConfigLib.sol#L167
+  let roundedSwapFee = event.params.swapFeePercentage
+    .div(FEE_SCALING_FACTOR)
+    .times(FEE_SCALING_FACTOR);
+
+  pool.swapFee = scaleDown(roundedSwapFee, 18);
   pool.save();
 }
 
