@@ -80,7 +80,7 @@ export function handleReClammVirtualBalancesUpdated(
   pool.save();
 }
 
-export function handleDailyPriceShiftExponentUpdated(
+export function handleReClammDailyPriceShiftExponentUpdated(
   event: DailyPriceShiftExponentUpdated
 ): void {
   let pool = ReClammParams.load(event.address) as ReClammParams;
