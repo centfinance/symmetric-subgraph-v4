@@ -6,11 +6,11 @@ import { ReClammPool } from "../types/ReClammPoolFactory/ReClammPool";
 import { ReClammParams } from "../types/schema";
 import { ReClammPool as ReClammPoolTemplate } from "../types/templates";
 import {
+  DailyPriceShiftExponentUpdated,
   CenterednessMarginUpdated,
-  LastTimestampUpdated,
   PriceRatioStateUpdated,
-  PriceShiftDailyRateUpdated,
   VirtualBalancesUpdated,
+  LastTimestampUpdated,
 } from "../types/templates/ReClammPool/ReClammPool";
 
 function handleReClammPoolParams(poolAddress: Address): Bytes {
@@ -22,8 +22,7 @@ function handleReClammPoolParams(poolAddress: Address): Bytes {
   reClammParams.lastTimestamp = reClammData.lastTimestamp;
   reClammParams.lastVirtualBalances = reClammData.lastVirtualBalances;
   reClammParams.centerednessMargin = reClammData.centerednessMargin;
-  reClammParams.priceShiftDailyRateInSeconds =
-    reClammData.priceShiftDailyRateInSeconds;
+  reClammParams.dailyPriceShiftBase = reClammData.dailyPriceShiftBase;
   reClammParams.currentFourthRootPriceRatio =
     reClammData.currentFourthRootPriceRatio;
   reClammParams.startFourthRootPriceRatio =
@@ -32,6 +31,9 @@ function handleReClammPoolParams(poolAddress: Address): Bytes {
   reClammParams.priceRatioUpdateStartTime =
     reClammData.priceRatioUpdateStartTime;
   reClammParams.priceRatioUpdateEndTime = reClammData.priceRatioUpdateEndTime;
+
+  let dailyPriceShiftExponent = reClamm.getDailyPriceShiftExponent();
+  reClammParams.dailyPriceShiftExponent = dailyPriceShiftExponent;
 
   reClammParams.save();
 
@@ -78,11 +80,12 @@ export function handleReClammVirtualBalancesUpdated(
   pool.save();
 }
 
-export function handleReClammPriceShiftDailyRateUpdated(
-  event: PriceShiftDailyRateUpdated
+export function handleDailyPriceShiftExponentUpdated(
+  event: DailyPriceShiftExponentUpdated
 ): void {
   let pool = ReClammParams.load(event.address) as ReClammParams;
-  pool.priceShiftDailyRateInSeconds = event.params.priceShiftDailyRateInSeconds;
+  pool.dailyPriceShiftBase = event.params.dailyPriceShiftBase;
+  pool.dailyPriceShiftExponent = event.params.dailyPriceShiftExponent;
   pool.save();
 }
 

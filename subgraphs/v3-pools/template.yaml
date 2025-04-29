@@ -275,8 +275,8 @@ templates:
           handler: handleReClammLastTimestampUpdated
         - event: PriceRatioStateUpdated(uint256,uint256,uint256,uint256)
           handler: handleReClammPriceRatioStateUpdated
-        - event: PriceShiftDailyRateUpdated(uint256,uint256)
-          handler: handleReClammPriceShiftDailyRateUpdated
+        - event: DailyPriceShiftExponentUpdated(uint256,uint256)
+          handler: handleReClammDailyPriceShiftExponentUpdated
         - event: VirtualBalancesUpdated(uint256,uint256)
           handler: handleReClammVirtualBalancesUpdated
       file: ./src/mappings/reclamm.ts

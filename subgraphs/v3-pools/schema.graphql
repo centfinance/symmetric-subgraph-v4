@@ -144,7 +144,9 @@ type ReClammParams @entity {
   "The last virtual balances of the pool"
   lastVirtualBalances: [BigInt!]!
   "Represents how fast the pool can move the virtual balances per day"
-  priceShiftDailyRateInSeconds: BigInt!
+  dailyPriceShiftExponent: BigInt!
+  "Internal time constant used to update virtual balances (1 - tau)"
+  dailyPriceShiftBase: BigInt!
   "The centeredness margin of the pool"
   centerednessMargin: BigInt!
   "The current fourth root price ratio, an interpolation of the price ratio state"

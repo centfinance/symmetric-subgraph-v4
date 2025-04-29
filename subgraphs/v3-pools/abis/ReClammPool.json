@@ -20,7 +20,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "priceShiftDailyRate",
+            "name": "dailyPriceShiftExponent",
             "type": "uint256"
           },
           {
@@ -70,6 +70,11 @@
   {
     "inputs": [],
     "name": "BaseOutOfBounds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DailyPriceShiftExponentTooHigh",
     "type": "error"
   },
   {
@@ -145,22 +150,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "resolvedStartTime",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "endTime",
-        "type": "uint256"
-      }
-    ],
-    "name": "GradualUpdateTimeTravel",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "account",
         "type": "address"
@@ -195,8 +184,29 @@
     "type": "error"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "resolvedStartTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      }
+    ],
+    "name": "InvalidStartTime",
+    "type": "error"
+  },
+  {
     "inputs": [],
     "name": "InvalidStartTime",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidToken",
     "type": "error"
   },
   {
@@ -227,11 +237,6 @@
   {
     "inputs": [],
     "name": "PriceRatioUpdateDurationTooShort",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "PriceShiftDailyRateTooHigh",
     "type": "error"
   },
   {
@@ -363,6 +368,25 @@
   },
   {
     "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "dailyPriceShiftExponent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "dailyPriceShiftBase",
+        "type": "uint256"
+      }
+    ],
+    "name": "DailyPriceShiftExponentUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
     "inputs": [],
     "name": "EIP712DomainChanged",
     "type": "event"
@@ -409,25 +433,6 @@
       }
     ],
     "name": "PriceRatioStateUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "priceShiftDailyRate",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "priceShiftDailyRateInSeconds",
-        "type": "uint256"
-      }
-    ],
-    "name": "PriceShiftDailyRateUpdated",
     "type": "event"
   },
   {
@@ -669,8 +674,32 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "balanceRatio",
+        "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "referenceToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "referenceAmountIn",
+        "type": "uint256"
+      }
+    ],
+    "name": "computeInitialBalances",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "initialBalances",
+        "type": "uint256[]"
       }
     ],
     "stateMutability": "view",
@@ -867,6 +896,32 @@
   },
   {
     "inputs": [],
+    "name": "getDailyPriceShiftBase",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDailyPriceShiftExponent",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getHookFlags",
     "outputs": [
       {
@@ -1050,19 +1105,6 @@
   },
   {
     "inputs": [],
-    "name": "getPriceShiftDailyRateInSeconds",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "getRate",
     "outputs": [
       {
@@ -1112,7 +1154,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "priceShiftDailyRateInSeconds",
+            "name": "dailyPriceShiftBase",
             "type": "uint256"
           },
           {
@@ -1202,7 +1244,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "initialPriceShiftDailyRate",
+            "name": "initialDailyPriceShiftExponent",
             "type": "uint256"
           },
           {
@@ -1232,7 +1274,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "maxPriceShiftDailyRate",
+            "name": "maxDailyPriceShiftExponent",
             "type": "uint256"
           },
           {
@@ -1352,6 +1394,24 @@
       {
         "internalType": "bool",
         "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "isPoolWithinTargetRangeUsingCurrentVirtualBalances",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "isWithinTargetRange",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "virtualBalancesChanged",
         "type": "bool"
       }
     ],
@@ -2071,6 +2131,25 @@
     "inputs": [
       {
         "internalType": "uint256",
+        "name": "newDailyPriceShiftExponent",
+        "type": "uint256"
+      }
+    ],
+    "name": "setDailyPriceShiftExponent",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "endFourthRootPriceRatio",
         "type": "uint256"
       },
@@ -2093,19 +2172,6 @@
         "type": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "newPriceShiftDailyRate",
-        "type": "uint256"
-      }
-    ],
-    "name": "setPriceShiftDailyRate",
-    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
