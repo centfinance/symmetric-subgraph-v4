@@ -164,6 +164,29 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
+    name: QuantAMMWeightedPoolFactory
+    network: arbitrum-one
+    source:
+      abi: BasePoolFactory
+      address: "0x62B9eC6A5BBEBe4F5C5f46C8A8880df857004295"
+      startBlock: 331549791
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: QuantAMMWeightedPool
+          file: ./abis/QuantAMMWeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleQuantAMMWeightedPoolCreated
+      file: ./src/mappings/quantamm.ts
+  - kind: ethereum
     name: LBPoolFactory
     network: arbitrum-one
     source:
