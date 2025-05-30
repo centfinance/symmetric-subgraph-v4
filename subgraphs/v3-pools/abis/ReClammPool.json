@@ -42,6 +42,16 @@
             "internalType": "uint256",
             "name": "initialTargetPrice",
             "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "tokenAPriceIncludesRate",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "tokenBPriceIncludesRate",
+            "type": "bool"
           }
         ],
         "internalType": "struct ReClammPoolParams",
@@ -139,17 +149,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "fourthRootPriceRatioDelta",
-        "type": "uint256"
-      }
-    ],
-    "name": "FourthRootPriceRatioDeltaBelowMin",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "account",
         "type": "address"
@@ -211,17 +210,7 @@
   },
   {
     "inputs": [],
-    "name": "NegativeAmountOut",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "NotImplemented",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "PoolCenterednessTooLow",
     "type": "error"
   },
   {
@@ -235,8 +224,29 @@
     "type": "error"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "fourthRootPriceRatioDelta",
+        "type": "uint256"
+      }
+    ],
+    "name": "PriceRatioDeltaBelowMin",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PriceRatioNotUpdating",
+    "type": "error"
+  },
+  {
     "inputs": [],
     "name": "PriceRatioUpdateDurationTooShort",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PriceRatioUpdateTooFast",
     "type": "error"
   },
   {
@@ -301,11 +311,6 @@
       }
     ],
     "name": "StringTooLong",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "TokenBalanceTooLow",
     "type": "error"
   },
   {
@@ -622,6 +627,11 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -639,6 +649,32 @@
       {
         "internalType": "uint256",
         "name": "maxPrice",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "computeCurrentPriceRatio",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "computeCurrentSpotPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -669,19 +705,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "computeInitialBalanceRatio",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "contract IERC20",
@@ -690,15 +713,15 @@
       },
       {
         "internalType": "uint256",
-        "name": "referenceAmountIn",
+        "name": "referenceAmountInRaw",
         "type": "uint256"
       }
     ],
-    "name": "computeInitialBalances",
+    "name": "computeInitialBalancesRaw",
     "outputs": [
       {
         "internalType": "uint256[]",
-        "name": "initialBalances",
+        "name": "initialBalancesRaw",
         "type": "uint256[]"
       }
     ],
@@ -1154,6 +1177,11 @@
           },
           {
             "internalType": "uint256",
+            "name": "dailyPriceShiftExponent",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
             "name": "dailyPriceShiftBase",
             "type": "uint256"
           },
@@ -1228,6 +1256,26 @@
             "type": "uint256[]"
           },
           {
+            "internalType": "bool",
+            "name": "tokenAPriceIncludesRate",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "tokenBPriceIncludesRate",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minSwapFeePercentage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxSwapFeePercentage",
+            "type": "uint256"
+          },
+          {
             "internalType": "uint256",
             "name": "initialMinPrice",
             "type": "uint256"
@@ -1254,27 +1302,12 @@
           },
           {
             "internalType": "uint256",
-            "name": "minCenterednessMargin",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxCenterednessMargin",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "minTokenBalanceScaled18",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "minPoolCenteredness",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
             "name": "maxDailyPriceShiftExponent",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxDailyPriceRatioUpdateRate",
             "type": "uint256"
           },
           {
@@ -1284,7 +1317,12 @@
           },
           {
             "internalType": "uint256",
-            "name": "minFourthRootPriceRatioDelta",
+            "name": "minPriceRatioDelta",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "balanceRatioAndPriceTolerance",
             "type": "uint256"
           }
         ],
@@ -2150,7 +2188,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "endFourthRootPriceRatio",
+        "name": "endPriceRatio",
         "type": "uint256"
       },
       {
@@ -2164,7 +2202,7 @@
         "type": "uint256"
       }
     ],
-    "name": "setPriceRatioState",
+    "name": "startPriceRatioUpdate",
     "outputs": [
       {
         "internalType": "uint256",
@@ -2172,6 +2210,13 @@
         "type": "uint256"
       }
     ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "stopPriceRatioUpdate",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },

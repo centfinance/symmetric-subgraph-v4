@@ -214,8 +214,8 @@ dataSources:
     network: sepolia
     source:
       abi: BasePoolFactory
-      address: "0x0fEA1fAb70506abb39e07A8bF32629d6CE820fBa"
-      startBlock: 8188894
+      address: "0xc6D15965fAA99368392Fd2c1e65319041032FF19"
+      startBlock: 8434315
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
