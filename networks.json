@@ -43,10 +43,6 @@
     "LBPoolFactory": {
       "address": "0x4eff2d77D9fFbAeFB4b141A3e494c085b3FF4Cb5",
       "startBlock": 21974368
-    },
-    "ReClammPoolFactory": {
-      "address": "0x7fA49Df302a98223d98D115fc4FCD275576f6faA",
-      "startBlock": 22342007
     }
   },
   "gnosis": {
@@ -137,8 +133,8 @@
       "startBlock": 7831623
     },
     "ReClammPoolFactory": {
-      "address": "0x0fEA1fAb70506abb39e07A8bF32629d6CE820fBa",
-      "startBlock": 8188894
+      "address": "0xc6D15965fAA99368392Fd2c1e65319041032FF19",
+      "startBlock": 8434315
     }
   },
   "arbitrum-one": {
@@ -229,8 +225,8 @@
       "startBlock": 27155451
     },
     "ReClammPoolFactory": {
-      "address": "0x84813aA3e079A665C0B80F944427eE83cBA63617",
-      "startBlock": 29373088
+      "address": "0x0C8f71D19f87c0bD1b9baD2484EcC3388D5DbB98",
+      "startBlock": 30880475
     },
     "QuantAMMWeightedPoolFactory": {
       "address": "0x62B9eC6A5BBEBe4F5C5f46C8A8880df857004295",

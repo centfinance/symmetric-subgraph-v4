@@ -214,8 +214,8 @@ dataSources:
     network: base
     source:
       abi: BasePoolFactory
-      address: "0x84813aA3e079A665C0B80F944427eE83cBA63617"
-      startBlock: 29373088
+      address: "0x0C8f71D19f87c0bD1b9baD2484EcC3388D5DbB98"
+      startBlock: 30880475
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
