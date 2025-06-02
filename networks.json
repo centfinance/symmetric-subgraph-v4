@@ -133,8 +133,8 @@
       "startBlock": 7831623
     },
     "ReClammPoolFactory": {
-      "address": "0xc6D15965fAA99368392Fd2c1e65319041032FF19",
-      "startBlock": 8434315
+      "address": "0x29001C9500D97508a7D82Ded442f0417584660ac",
+      "startBlock": 8440912
     }
   },
   "arbitrum-one": {
@@ -225,8 +225,8 @@
       "startBlock": 27155451
     },
     "ReClammPoolFactory": {
-      "address": "0x0C8f71D19f87c0bD1b9baD2484EcC3388D5DbB98",
-      "startBlock": 30880475
+      "address": "0xa3b370092aeb56770B23315252aB5E16DAcBF62B",
+      "startBlock": 30920137
     },
     "QuantAMMWeightedPoolFactory": {
       "address": "0x62B9eC6A5BBEBe4F5C5f46C8A8880df857004295",
