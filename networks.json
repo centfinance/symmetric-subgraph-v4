@@ -43,6 +43,10 @@
     "LBPoolFactory": {
       "address": "0x4eff2d77D9fFbAeFB4b141A3e494c085b3FF4Cb5",
       "startBlock": 21974368
+    },
+    "ReClammPoolFactory": {
+      "address": "0x312600bc7645E47a4926dc658827398AF070D431",
+      "startBlock": 22618873
     }
   },
   "gnosis": {
