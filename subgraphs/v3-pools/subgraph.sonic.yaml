@@ -123,7 +123,7 @@ dataSources:
     source:
       abi: StableSurgeHook
       address: "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C"
-      startBlock: 8689861
+      startBlock: 8689860
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -139,4 +139,27 @@ dataSources:
       eventHandlers:
         - event: StableSurgeHookRegistered(indexed address,indexed address)
           handler: handleStableSurgeHookRegistered
+      file: ./src/mappings/surge.ts
+  - kind: ethereum
+    name: StableSurgeHookV2
+    network: sonic
+    source:
+      abi: StableSurgeHook
+      address: "0x049919Ae32E50aEe5ea1A0998a841d175ec6f1b3"
+      startBlock: 20504697
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts

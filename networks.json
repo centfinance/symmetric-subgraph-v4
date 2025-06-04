@@ -264,7 +264,11 @@
     },
     "StableSurgeHook": {
       "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
-      "startBlock": 8689861
+      "startBlock": 8689860
+    },
+    "StableSurgeHookV2": {
+      "address": "0x049919Ae32E50aEe5ea1A0998a841d175ec6f1b3",
+      "startBlock": 20504697
     },
     "GyroECLPPoolFactory": {
       "address": "0xf023731dD8758D7C869af10005e6380Cb57775a9",
@@ -308,11 +312,11 @@
   "optimism": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 133969430
+      "startBlock": 133969431
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
-      "startBlock": 133969430
+      "startBlock": 133969431
     },
     "WeightedPoolFactory": {
       "address": "0x0f08eEf2C785AA5e7539684aF04755dEC1347b7c",
