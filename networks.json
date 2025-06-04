@@ -263,12 +263,12 @@
       "startBlock": 17236613
     },
     "StableSurgeHook": {
-      "address": "0x3D9319BB29DAF6081D01DC56b6203EfcC90f0bAD",
-      "startBlock": 8689861
+      "address": "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C",
+      "startBlock": 8689860
     },
     "StableSurgeHookV2": {
-      "address": "0x86705Ee19c0509Ff68F1118C55ee2ebdE383D122",
-      "startBlock": 20504831
+      "address": "0x049919Ae32E50aEe5ea1A0998a841d175ec6f1b3",
+      "startBlock": 20504697
     },
     "GyroECLPPoolFactory": {
       "address": "0xf023731dD8758D7C869af10005e6380Cb57775a9",
