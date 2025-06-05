@@ -273,6 +273,10 @@
     "GyroECLPPoolFactory": {
       "address": "0xf023731dD8758D7C869af10005e6380Cb57775a9",
       "startBlock": 14211027
+    },
+    "QuantAMMWeightedPoolFactory": {
+      "address": "0x60006d255569b36a3d494e83D182b57acd04D484",
+      "startBlock": 31661323
     }
   },
   "avalanche": {
