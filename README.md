@@ -83,3 +83,10 @@ pnpm pools deploy
 pnpm vault build
 pnpm vault deploy
 ```
+
+Alternatively, enter each subgraph and deploy manually using graph.
+
+```
+graph deploy symmetric-v-4-moksha-vault
+graph deploy symmetric-v-4-moksha-pools
+```

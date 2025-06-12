@@ -362,5 +362,23 @@
       "address": "0x0b11209B8c5E821b18dED147583b8978c3E63911",
       "startBlock": "136991947"
     }
+  },
+  "moksha": {
+    "Vault": {
+      "address": "0xD7B62A494D11CCF33327ea9F1C5B176c69e964Db",
+      "startBlock": 133969431
+    },
+    "ProtocolFeeController": {
+      "address": "0x0FE84fd2535bA044fB00F4DB70cA74B04ec210B6",
+      "startBlock": 133969431
+    },
+    "WeightedPoolFactory": {
+      "address": "0x9C55C43b66E28df924D0F971f08e514e73624228",
+      "startBlock": 133969652
+    },
+    "StablePoolV2Factory": {
+      "address": "0x9Bb9B3bC3FE3C336421bE111bD339B640235458A",
+      "startBlock": 133969860
+    }
   }
 }
