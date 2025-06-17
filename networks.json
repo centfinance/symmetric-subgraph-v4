@@ -365,20 +365,51 @@
   },
   "moksha": {
     "Vault": {
-      "address": "0xD7B62A494D11CCF33327ea9F1C5B176c69e964Db",
-      "startBlock": 133969431
+      "address": "0x442150f759BDF76212381414E69b06Fb2C0FfA78",
+      "startBlock": 3192880
     },
     "ProtocolFeeController": {
-      "address": "0x0FE84fd2535bA044fB00F4DB70cA74B04ec210B6",
-      "startBlock": 133969431
+      "address": "0x78B77ae7E3E5b3309d3fCB2Ffe67fC61d3eD0618",
+      "startBlock": 3192880
     },
     "WeightedPoolFactory": {
-      "address": "0x9C55C43b66E28df924D0F971f08e514e73624228",
-      "startBlock": 133969652
+      "address": "0xF1262ed5EF08b1f0E7d4c41912922ac85f690713",
+      "startBlock": 3192880
+    },
+    "StablePoolFactory": {
+      "address": "0x8b25388494d07A3AeF6F945eB89929D997437F22",
+      "startBlock": 3192880
     },
     "StablePoolV2Factory": {
-      "address": "0x9Bb9B3bC3FE3C336421bE111bD339B640235458A",
-      "startBlock": 133969860
+      "address": "0x8b25388494d07A3AeF6F945eB89929D997437F22",
+      "startBlock": 3192880
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x32d4cA09cFB9A792E1E88290523F9f94b97E271a",
+      "startBlock": 3192880
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x809d179cCD65558a9451d41F7B8b951e89BBa785",
+      "startBlock": 3192880
+    },
+    "StableSurgeHook": {
+      "address": "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9",
+      "startBlock": 3192880
+    },
+    "StableSurgeHookV2": {
+      "address": "0x7dfca838fD5fCd70f876431D41CaA3E3E2ea1520",
+      "startBlock": 3192880
+    },
+    "QuantAMMWeightedPoolFactory": {
+      "address": "0x4b12970320A4895101CA8cD92c090eC9D7a8BB10",
+      "startBlock": 3192880
+    },
+    "LBPoolFactory": {
+      "address": "0xFd0c74fb0f7FFC3401DFe9a251D7afDcf2666268",
+      "startBlock": 3192880
+    },
+    "ReClammPoolFactory": {
+      "address": "0x4F0379D587Ef9D32C51706c85f6842908D91A6DF",
+      "startBlock": 3192880
     }
-  }
 }
