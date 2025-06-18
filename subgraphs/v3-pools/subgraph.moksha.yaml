@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: moksha
+    network: vana-moksha
     source:
       abi: BasePoolFactory
       address: "0x9C55C43b66E28df924D0F971f08e514e73624228"
-      startBlock: 133969652
+      startBlock: 3192880
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -27,11 +27,11 @@ dataSources:
       file: ./src/mappings/weighted.ts
   - kind: ethereum
     name: StablePoolV2Factory
-    network: moksha
+    network: vana-moksha
     source:
       abi: BasePoolFactory
       address: "0x9Bb9B3bC3FE3C336421bE111bD339B640235458A"
-      startBlock: 133969860
+      startBlock: 3192880
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

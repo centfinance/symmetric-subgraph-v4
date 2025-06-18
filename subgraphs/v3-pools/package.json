@@ -4,9 +4,9 @@
   "scripts": {
     "add-pool": "node scripts/cli.js",
     "add-factory": "node scripts/cli.js",
-    "codegen": "graph codegen --output-dir src/types/",
+    "codegen": "graph codegen subgraph.moksha.yaml --output-dir src/types/ && graph build subgraph.moksha.yaml",
     "deploy": "graph deploy",
-    "build": "graph build",
+    "deploy:moksha": "graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml",
     "test": "graph test"
   },
   "dependencies": {
