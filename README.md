@@ -79,9 +79,9 @@ To deploy manually, ensure you have the necessary credentials and run:
 ```
 pnpm pools build
 cd subgraphs/v3-pools
-graph deploy symmetric-v-4-moksha-pools
+graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml
 
 pnpm vault build
 cd subgraphs/v3-vault
-graph deploy symmetric-v-4-moksha-vault
+graph deploy symmetric-v-4-moksha-vaule subgraph.moksha.yaml
 ```
