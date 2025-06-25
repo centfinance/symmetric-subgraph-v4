@@ -83,5 +83,5 @@ graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml
 
 pnpm vault build
 cd subgraphs/v3-vault
-graph deploy symmetric-v-4-moksha-vaule subgraph.moksha.yaml
+graph deploy symmetric-v-4-moksha-vault subgraph.moksha.yaml
 ```

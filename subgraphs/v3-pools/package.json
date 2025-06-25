@@ -7,7 +7,8 @@
     "codegen": "graph codegen subgraph.moksha.yaml --output-dir src/types/ && graph build subgraph.moksha.yaml",
     "deploy": "graph deploy",
     "deploy:moksha": "graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml",
-    "test": "graph test"
+    "test": "graph test",
+    "build": "graph build"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.90.0",
