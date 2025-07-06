@@ -9,7 +9,7 @@ dataSources:
     network: vana-moksha
     source:
       abi: Vault
-      address: "0xA8575572f108C57F70Ad5A42dc1d457dd678C34f"
+      address: "0x67709C7Ee06912611976Ab527c9041BCee7aB0F7"
       startBlock: 3300003
     mapping:
       kind: ethereum/events

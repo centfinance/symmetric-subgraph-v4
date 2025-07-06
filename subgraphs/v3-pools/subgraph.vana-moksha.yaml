@@ -7,7 +7,7 @@ dataSources:
     network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xC889F43501DDf3Bd30a3821C3B40123ac64fD797"
+      address: "0xa60347793e42E4E56cDa1E0BB77FA9A7A7696ACD"
       startBlock: 3300007
     mapping:
       kind: ethereum/events
@@ -30,7 +30,7 @@ dataSources:
     network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e"
+      address: "0xF52e68d865f09A489B46dBbF0F5A84cE0AA1eB76"
       startBlock: 3300014
     mapping:
       kind: ethereum/events
@@ -53,7 +53,7 @@ dataSources:
     network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e"
+      address: "0xF52e68d865f09A489B46dBbF0F5A84cE0AA1eB76"
       startBlock: 3300014
     mapping:
       kind: ethereum/events

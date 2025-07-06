@@ -365,23 +365,23 @@
   },
   "vana-moksha": {
     "Vault": {
-      "address": "0xA8575572f108C57F70Ad5A42dc1d457dd678C34f",
+      "address": "0x67709C7Ee06912611976Ab527c9041BCee7aB0F7",
       "startBlock": 3300003
     },
     "ProtocolFeeController": {
-      "address": "0x11bb04A44e88Bb950b6b8c64396a5D3F5fD291A0",
+      "address": "0xcc16EA5230c1483DF78bdA0Dd4Ce55eeFF8a8106",
       "startBlock": 3300003
     },
     "WeightedPoolFactory": {
-      "address": "0xC889F43501DDf3Bd30a3821C3B40123ac64fD797",
+      "address": "0xa60347793e42E4E56cDa1E0BB77FA9A7A7696ACD",
       "startBlock": 3300007
     },
     "StablePoolFactory": {
-      "address": "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e",
+      "address": "0xF52e68d865f09A489B46dBbF0F5A84cE0AA1eB76",
       "startBlock": 3300014
     },
     "StablePoolV2Factory": {
-      "address": "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e",
+      "address": "0xF52e68d865f09A489B46dBbF0F5A84cE0AA1eB76",
       "startBlock": 3300014
     },
     "Gyro2CLPPoolFactory": {
