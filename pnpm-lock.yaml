@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@graphprotocol/graph-ts':
+        specifier: ^0.38.2
+        version: 0.38.2
     devDependencies:
       js-yaml:
         specifier: ^4.1.0
@@ -16,7 +20,7 @@ importers:
     dependencies:
       '@graphprotocol/graph-cli':
         specifier: 0.90.0
-        version: 0.90.0(@types/node@22.5.0)(node-fetch@3.3.2)(typescript@5.5.4)
+        version: 0.90.0(@types/node@22.5.0)(encoding@0.1.13)(node-fetch@3.3.2)(typescript@5.5.4)
       '@graphprotocol/graph-ts':
         specifier: 0.35.0
         version: 0.35.0
@@ -29,7 +33,7 @@ importers:
     dependencies:
       '@graphprotocol/graph-cli':
         specifier: 0.90.0
-        version: 0.90.0(@types/node@22.5.0)(node-fetch@3.3.2)(typescript@5.5.4)
+        version: 0.90.0(@types/node@22.5.0)(encoding@0.1.13)(node-fetch@3.3.2)(typescript@5.5.4)
       '@graphprotocol/graph-ts':
         specifier: 0.35.0
         version: 0.35.0
@@ -124,6 +128,9 @@ packages:
 
   '@graphprotocol/graph-ts@0.35.0':
     resolution: {integrity: sha512-dM+I/e/WeBa8Q3m4ZLFfJjKBS9YwV+DLggWi8oEIGmnhPAZ298QB6H4hquvxqaOTSXJ2j9tPsw3xSmbRLwk39A==}
+
+  '@graphprotocol/graph-ts@0.38.2':
+    resolution: {integrity: sha512-87KIFSFs2+Te+mnmb7Y+M57oqzlLy20cIyPIRbn9qJfpZFSZHTKtBLT6KQmcsK0YkoWis9Ur3c3M2c9mmaaEHQ==}
 
   '@ipld/dag-cbor@7.0.3':
     resolution: {integrity: sha512-1VVh2huHsuohdXC1bGJNE8WR72slZ9XE2T3wbBBq31dm7ZBatmKLLxrB+XAqafxfRFjv08RZmj/W/ZqaM13AuA==}
@@ -405,6 +412,11 @@ packages:
     resolution: {integrity: sha512-fwOQNZVTMga5KRsfY80g7cpOl4PsFQczMwHzdtgoqLXaYhkhavufKb0sB0l3T1DUxpAufA0KNhlbpuuhZUwxMA==}
     hasBin: true
 
+  assemblyscript@0.27.31:
+    resolution: {integrity: sha512-Ra8kiGhgJQGZcBxjtMcyVRxOEJZX64kd+XGpjWzjcjgxWJVv+CAQO0aDBk4GQVhjYbOkATarC83mHjAVGtwPBQ==}
+    engines: {node: '>=16', npm: '>=7'}
+    hasBin: true
+
   astral-regex@2.0.0:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
@@ -445,6 +457,10 @@ packages:
 
   binaryen@102.0.0-nightly.20211028:
     resolution: {integrity: sha512-GCJBVB5exbxzzvyt8MGDv/MeUjs6gkXDvf4xOIItRBptYl0Tz5sm1o/uG95YK0L0VeG5ajDu3hRtkBP2kzqC5w==}
+    hasBin: true
+
+  binaryen@116.0.0-nightly.20240114:
+    resolution: {integrity: sha512-0GZrojJnuhoe+hiwji7QFaL3tBlJoA+KFUN7ouYSDGZLSo9CKM8swQX8n/UcbR0d1VuZKU+nhogNzv423JEu5A==}
     hasBin: true
 
   bl@1.2.3:
@@ -1405,6 +1421,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -2088,7 +2105,7 @@ snapshots:
       graphql-import-node: 0.0.5(graphql@16.9.0)
       js-yaml: 4.1.0
 
-  '@graphprotocol/graph-cli@0.90.0(@types/node@22.5.0)(node-fetch@3.3.2)(typescript@5.5.4)':
+  '@graphprotocol/graph-cli@0.90.0(@types/node@22.5.0)(encoding@0.1.13)(node-fetch@3.3.2)(typescript@5.5.4)':
     dependencies:
       '@float-capital/float-subgraph-uncrashable': 0.0.0-internal-testing.5
       '@oclif/core': 2.8.6(@types/node@22.5.0)(typescript@5.5.4)
@@ -2108,7 +2125,7 @@ snapshots:
       gluegun: 5.1.6(debug@4.3.4)
       graphql: 15.5.0
       immutable: 4.2.1
-      ipfs-http-client: 55.0.0(node-fetch@3.3.2)
+      ipfs-http-client: 55.0.0(encoding@0.1.13)(node-fetch@3.3.2)
       jayson: 4.0.0
       js-yaml: 3.14.1
       open: 8.4.2
@@ -2137,6 +2154,10 @@ snapshots:
   '@graphprotocol/graph-ts@0.35.0':
     dependencies:
       assemblyscript: 0.19.10
+
+  '@graphprotocol/graph-ts@0.38.2':
+    dependencies:
+      assemblyscript: 0.27.31
 
   '@ipld/dag-cbor@7.0.3':
     dependencies:
@@ -2525,6 +2546,11 @@ snapshots:
       long: 5.2.3
       source-map-support: 0.5.21
 
+  assemblyscript@0.27.31:
+    dependencies:
+      binaryen: 116.0.0-nightly.20240114
+      long: 5.2.3
+
   astral-regex@2.0.0: {}
 
   async@3.2.6: {}
@@ -2560,6 +2586,8 @@ snapshots:
   binaryen@101.0.0-nightly.20210723: {}
 
   binaryen@102.0.0-nightly.20211028: {}
+
+  binaryen@116.0.0-nightly.20240114: {}
 
   bl@1.2.3:
     dependencies:
@@ -2795,11 +2823,13 @@ snapshots:
   debug@4.3.4(supports-color@8.1.1):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
       supports-color: 8.1.1
 
   debug@4.3.7(supports-color@8.1.1):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
       supports-color: 8.1.1
 
   defaults@1.0.4:
@@ -3024,7 +3054,7 @@ snapshots:
       to-regex-range: 5.0.1
 
   follow-redirects@1.15.6(debug@4.3.4):
-    dependencies:
+    optionalDependencies:
       debug: 4.3.4(supports-color@8.1.1)
 
   form-data@2.5.1:
@@ -3262,7 +3292,7 @@ snapshots:
       - node-fetch
       - supports-color
 
-  ipfs-core-utils@0.13.0(node-fetch@3.3.2):
+  ipfs-core-utils@0.13.0(encoding@0.1.13)(node-fetch@3.3.2):
     dependencies:
       any-signal: 2.1.2
       blob-to-it: 1.0.4
@@ -3271,7 +3301,7 @@ snapshots:
       err-code: 3.0.1
       ipfs-core-types: 0.9.0(node-fetch@3.3.2)
       ipfs-unixfs: 6.0.9
-      ipfs-utils: 9.0.14
+      ipfs-utils: 9.0.14(encoding@0.1.13)
       it-all: 1.0.6
       it-map: 1.0.6
       it-peekable: 1.0.3
@@ -3289,7 +3319,7 @@ snapshots:
       - node-fetch
       - supports-color
 
-  ipfs-http-client@55.0.0(node-fetch@3.3.2):
+  ipfs-http-client@55.0.0(encoding@0.1.13)(node-fetch@3.3.2):
     dependencies:
       '@ipld/dag-cbor': 7.0.3
       '@ipld/dag-json': 8.0.11
@@ -3299,8 +3329,8 @@ snapshots:
       debug: 4.3.4(supports-color@8.1.1)
       err-code: 3.0.1
       ipfs-core-types: 0.9.0(node-fetch@3.3.2)
-      ipfs-core-utils: 0.13.0(node-fetch@3.3.2)
-      ipfs-utils: 9.0.14
+      ipfs-core-utils: 0.13.0(encoding@0.1.13)(node-fetch@3.3.2)
+      ipfs-utils: 9.0.14(encoding@0.1.13)
       it-first: 1.0.7
       it-last: 1.0.6
       merge-options: 3.0.4
@@ -3320,7 +3350,7 @@ snapshots:
       err-code: 3.0.1
       protobufjs: 6.11.4
 
-  ipfs-utils@9.0.14:
+  ipfs-utils@9.0.14(encoding@0.1.13):
     dependencies:
       any-signal: 3.0.1
       browser-readablestream-to-it: 1.0.3
@@ -3334,8 +3364,8 @@ snapshots:
       it-to-stream: 1.0.0
       merge-options: 3.0.4
       nanoid: 3.3.7
-      native-fetch: 3.0.0(node-fetch@2.7.0)
-      node-fetch: 2.7.0
+      native-fetch: 3.0.0(node-fetch@2.7.0(encoding@0.1.13))
+      node-fetch: 2.7.0(encoding@0.1.13)
       react-native-fetch-api: 3.0.0
       stream-to-it: 0.2.4
     transitivePeerDependencies:
@@ -3632,9 +3662,9 @@ snapshots:
     dependencies:
       abort-controller: 3.0.0
 
-  native-fetch@3.0.0(node-fetch@2.7.0):
+  native-fetch@3.0.0(node-fetch@2.7.0(encoding@0.1.13)):
     dependencies:
-      node-fetch: 2.7.0
+      node-fetch: 2.7.0(encoding@0.1.13)
 
   native-fetch@3.0.0(node-fetch@3.3.2):
     dependencies:
@@ -3646,9 +3676,11 @@ snapshots:
 
   node-domexception@1.0.0: {}
 
-  node-fetch@2.7.0:
+  node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
   node-fetch@3.3.2:
     dependencies:

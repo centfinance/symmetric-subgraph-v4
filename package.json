@@ -6,9 +6,14 @@
     "pools": "pnpm --filter @subgraphs/v3-pools",
     "vault": "pnpm --filter @subgraphs/v3-vault",
     "codegen:moksha": "pnpm -r codegen subgraph.moksha.yaml",
-    "codegen:sepolia": "pnpm -r codegen subgraph.sepolia.yaml"
+    "codegen:sepolia": "pnpm -r codegen subgraph.sepolia.yaml",
+    "codegen:swellchain-sepolia": "pnpm -r codegen subgraph.swellchain-sepolia.yaml",
+    "codegen:swell-testnet": "pnpm -r codegen subgraph.swell-testnet.yaml"
   },
   "devDependencies": {
     "js-yaml": "^4.1.0"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-ts": "^0.38.2"
   }
 }

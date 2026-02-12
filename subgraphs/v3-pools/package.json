@@ -6,9 +6,13 @@
     "add-factory": "node scripts/cli.js",
     "codegen:moksha": "graph codegen subgraph.moksha.yaml --output-dir src/types/ && graph build subgraph.moksha.yaml",
     "codegen:sepolia": "graph codegen subgraph.sepolia.yaml --output-dir src/types/ && graph build subgraph.sepolia.yaml",
+    "codegen:swellchain-sepolia": "graph codegen subgraph.swellchain-sepolia.yaml --output-dir src/types/ && graph build subgraph.swellchain-sepolia.yaml",
+    "codegen:swell-testnet": "graph codegen subgraph.swell-testnet.yaml --output-dir src/types/ && graph build subgraph.swell-testnet.yaml",
     "deploy": "graph deploy",
     "deploy:moksha": "graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml",
     "deploy:sepolia": "graph deploy symmetric-v-4-sepolia-pools subgraph.sepolia.yaml",
+    "deploy:swellchain-sepolia": "graph deploy symmetric-v-4-swellchain-sepolia-pools subgraph.swellchain-sepolia.yaml",
+    "deploy:goldsky:swell-testnet": "pnpm codegen:swell-testnet && node ../../scripts/deploy-goldsky.js --dir . --manifest subgraph.swell-testnet.yaml --subgraph symmetric-v-4-swell-testnet-pools --tag swell-testnet",
     "test": "graph test",
     "build": "graph build"
   },

@@ -6,7 +6,7 @@ indexerHints:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: Vault
       address: "0x89d3Bdfc7F9b3C6F07daa20366F6DC48a65daE07"
@@ -58,7 +58,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BPT
     mapping:
@@ -76,7 +76,7 @@ templates:
       file: ./src/mappings/bpt.ts
   - kind: ethereum
     name: ProtocolFeeController
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: ProtocolFeeController
     mapping:

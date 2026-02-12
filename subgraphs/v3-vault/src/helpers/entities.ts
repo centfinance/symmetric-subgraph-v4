@@ -7,7 +7,6 @@ import {
   RateProvider,
   Token,
   User,
-  Vault,
 } from "../types/schema";
 import { PoolShare } from "../types/schema";
 import { ONE_BD, VAULT_ADDRESS, ZERO_ADDRESS, ZERO_BD } from "./constants";
@@ -15,26 +14,56 @@ import { PoolRegisteredTokenConfigStruct } from "../types/Vault/Vault";
 import { ERC20 } from "../types/Vault/ERC20";
 import { VaultExtension } from "../types/Vault/VaultExtension";
 import { scaleDown } from "./misc";
-import { ProtocolFeeController } from "../types/templates";
+
+import { Address, dataSource, log } from "@graphprotocol/graph-ts";
+
+// IMPORTANT: alias imports to avoid name collisions
+import { Vault as VaultEntity } from "../types/schema";
+import { VaultExtension as VaultExtensionContract } from "../types/Vault/VaultExtension";
+
+// If you have a template for ProtocolFeeController, keep it; otherwise remove the create() bit.
+import { ProtocolFeeController as ProtocolFeeControllerTemplate } from "../types/templates";
+
 
 const DAY = 24 * 60 * 60;
 
-export function getVault(): Vault {
-  let vault: Vault | null = Vault.load(VAULT_ADDRESS);
+export function getVault(): VaultEntity {
+  // Vault address comes from subgraph.yaml datasource
+  const vaultAddress: Address = dataSource.address();
+
+  let vault = VaultEntity.load(vaultAddress);
   if (vault != null) return vault;
 
-  let vaultContract = VaultExtension.bind(changetype<Address>(VAULT_ADDRESS));
-  let protocolFeeController = vaultContract.getProtocolFeeController();
+  // Bind to VaultExtension (this is where your ABI includes getProtocolFeeController)
+  const vaultExt = VaultExtensionContract.bind(vaultAddress);
 
-  vault = new Vault(VAULT_ADDRESS);
+  // Safe call (never abort mapping)
+  const pfcResult = vaultExt.try_getProtocolFeeController();
+
+  const pfc = pfcResult.reverted ? ZERO_ADDRESS : pfcResult.value;
+
+  vault = new VaultEntity(vaultAddress);
+
+  // DO NOT set vault.address unless your schema has an address field.
+  // The entity ID already *is* the address.
   vault.isPaused = false;
   vault.authorizer = ZERO_ADDRESS;
   vault.protocolSwapFee = ZERO_BD;
   vault.protocolYieldFee = ZERO_BD;
-  vault.protocolFeeController = protocolFeeController;
+  vault.protocolFeeController = pfc;
+
   vault.save();
 
-  ProtocolFeeController.create(protocolFeeController);
+  // Optional: start indexing the controller once known
+  if (!pfcResult.reverted && pfc != ZERO_ADDRESS) {
+    ProtocolFeeControllerTemplate.create(pfc);
+  }
+
+  if (pfcResult.reverted) {
+    log.warning("getProtocolFeeController() reverted for Vault {}", [
+      vaultAddress.toHexString(),
+    ]);
+  }
 
   return vault;
 }

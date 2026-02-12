@@ -413,4 +413,73 @@
       "startBlock": 3300009
     }
 }
+  ,
+  "swellchain-sepolia": {
+    "Vault": {
+      "address": "0x89d3Bdfc7F9b3C6F07daa20366F6DC48a65daE07",
+      "startBlock": 20171148
+    },
+    "ProtocolFeeController": {
+      "address": "0xEA90b92B4A3AA583AD27483b1247d80409752716",
+      "startBlock": 20171145
+    },
+    "WeightedPoolFactory": {
+      "address": "0x9E57809C7d9A1Cb069957656dEff4409DeAab34C",
+      "startBlock": 20171163
+    },
+    "StablePoolFactory": {
+      "address": "0xFE9288d762aA767c76946256A37da6B5306ceB4e",
+      "startBlock": 20171166
+    },
+    "StablePoolV2Factory": {
+      "address": "0xFE9288d762aA767c76946256A37da6B5306ceB4e",
+      "startBlock": 20171166
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xE33e09B0b422e27d272F870b0F40f2c3eC388d72",
+      "startBlock": 20171169
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x3066E4D27b83F1eE9C259962771fdA112E25aB24",
+      "startBlock": 20171172
+    },
+    "StableSurgeHook": {
+      "address": "0x54a0EEd3A3359b9Cbfb5ea4073973966c7255771",
+      "startBlock": 20171160
+    }
+  },
+  "swell-testnet": {
+    "Vault": {
+      "address": "0x89d3Bdfc7F9b3C6F07daa20366F6DC48a65daE07",
+      "startBlock": 20171148
+    },
+    "ProtocolFeeController": {
+      "address": "0xEA90b92B4A3AA583AD27483b1247d80409752716",
+      "startBlock": 20171145
+    },
+    "WeightedPoolFactory": {
+      "address": "0x9E57809C7d9A1Cb069957656dEff4409DeAab34C",
+      "startBlock": 20171163
+    },
+    "StablePoolFactory": {
+      "address": "0xFE9288d762aA767c76946256A37da6B5306ceB4e",
+      "startBlock": 20171166
+    },
+    "StablePoolV2Factory": {
+      "address": "0xFE9288d762aA767c76946256A37da6B5306ceB4e",
+      "startBlock": 20171166
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xE33e09B0b422e27d272F870b0F40f2c3eC388d72",
+      "startBlock": 20171169
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x3066E4D27b83F1eE9C259962771fdA112E25aB24",
+      "startBlock": 20171172
+    },
+    "StableSurgeHook": {
+      "address": "0x54a0EEd3A3359b9Cbfb5ea4073973966c7255771",
+      "startBlock": 20171160
+    }
+  }
 }

@@ -78,7 +78,7 @@ type StableSurgeParams @entity(immutable: false) {
   "Unique identifier for the StableSurgeParams"
   id: Bytes!
   "Amplification parameter"
-  amp: BigInt!
+  amp: BigInt
   "Maximum surge fee percentage"
   maxSurgeFeePercentage: BigDecimal!
   "Surge threshold percentage"

@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BasePoolFactory
       address: "0x9E57809C7d9A1Cb069957656dEff4409DeAab34C"
@@ -27,7 +27,7 @@ dataSources:
       file: ./src/mappings/weighted.ts
   - kind: ethereum
     name: StablePoolFactory
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BasePoolFactory
       address: "0xFE9288d762aA767c76946256A37da6B5306ceB4e"
@@ -50,7 +50,7 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: StablePoolV2Factory
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BasePoolFactory
       address: "0xFE9288d762aA767c76946256A37da6B5306ceB4e"
@@ -73,7 +73,7 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BasePoolFactory
       address: "0x3066E4D27b83F1eE9C259962771fdA112E25aB24"
@@ -96,7 +96,7 @@ dataSources:
       file: ./src/mappings/gyro2.ts
   - kind: ethereum
     name: GyroECLPPoolFactory
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: BasePoolFactory
       address: "0xE33e09B0b422e27d272F870b0F40f2c3eC388d72"
@@ -119,7 +119,7 @@ dataSources:
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
     name: StableSurgeHook
-    network: swell-testnet
+    network: swellchain-sepolia
     source:
       abi: StableSurgeHook
       address: "0x54a0EEd3A3359b9Cbfb5ea4073973966c7255771"
